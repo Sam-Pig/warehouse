@@ -31,7 +31,7 @@ hr{
     font-size: 24px;
     font-family: "Arial Black";
     font-weight: bold;
-    padding: 23.5px;
+    padding: 21px;
 }
 .topNavBar .logo .rs{
     color: #e6686a;
@@ -51,8 +51,8 @@ hr{
 .navList li a{
     display: block;
     font-size: 12px;
-    padding: 8px 0px;
-    margin: 25px 17px;
+    padding: 9px 0px 7px 0px;
+    margin: 20px 17px;
     color: #b7b7b7;
     font-weight: bold;
     border-bottom: 3px solid transparent;
