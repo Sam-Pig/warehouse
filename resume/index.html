@@ -19,7 +19,8 @@
 <body>
     <nav class="topNavBar clearfix">
         <a class="logo " href="#" alt="logo">
-            <span class="rs">RS</span><span class="card">card</span>
+            <span class="rs">RS</span>
+            <span class="card">card</span>
         </a>
         <ul class="navList clearfix">
             <li><a href="#">关于</a></li>
@@ -80,37 +81,89 @@
                 </a>
             </footer>
         </div>
-        <a class="button" href="#">下载PDF</a>
-        <p>
-            董杭彬，工作半年多后了解到前端开发，于是自学一段时间后又参加了前端培训；
-            了解HTML，CSS,javascript;
+        <div class="downloadResume-wrapper">
+            <a class="downloadResume" href="./resume.pdf" target="_blank" download>下载PDF</a>
+        </div>
+        <p class="selfIntroduction">
+            董杭彬,工作半年多后了解到前端开发,于是自学一段时间后又参加了前端培训;
+            了解HTML,CSS,javascript;
         </p>
     </main>
-    <section>
+    <section class="skills">
         <h2>技能</h2>
-        <ol>
-            <li>HTML &amp; CSS</li>
-            <li>JavaScript</li>
-            <li>jquery</li>
-            <li>Vue</li>
-            <li>React</li>
-            <li>HTTP</li>
+        <ol class="clearfix">
+            <li>
+                <h3>HTML 5 &amp; CSS 3</h3>
+                <div class="progressBar progress-60"></div>
+            </li>
+            <li>
+                <h3>JavaScript</h3>
+                <div class="progressBar progress-50"></div>
+            </li>
+            <li>
+                <h3>jQuery</h3>
+                <div class="progressBar progress-50"></div>
+            </li>
+            <li>
+                <h3>VUE.js</h3>
+                <div class="progressBar progress-30"></div>
+            </li>
+            <li>
+                <h3>React.js</h3>
+                <div class="progressBar progress-30"></div>
+            </li>
+            <li>
+                <h3>Node.js</h3>
+                <div class="progressBar progress-30"></div>
+            </li>
         </ol>
     </section>
-    <section>
+    <section class="portfolio">
         <h2>作品集</h2>
         <nav>
-          <ol>
-            <li>所有</li>
-            <li>框架</li>
-            <li>原生JS&amp;CSS</li>
-          </ol>
+            <ol class="clearfix">
+                <li id="portfolio1">所有</li
+                ><li id="portfolio2">框架</li
+                ><li id="portfolio3">原生JS&amp;CSS</li>
+            </ol>
+            <div id="portfolioBar" class="bar state-1">
+                <div class="bar-inner"></div>
+            </div>
         </nav>
-        <div class="jobs">
-          <div class="big"></div>
-          <div class="small"></div>
-          <div class="small"></div>
+        <div class="jobs" style="height:600px;">
+            <div id="big_1" class="big" style="top: 0; left: 0;">
+                <img id="big_1_picture"  src="./images/1.jpg" alt="作品1">
+            </div>
+            <div id="small_1" class="small" style="top: 0; right: 0;" >
+                <img src="./images/2.jpg" alt="作品2">
+            </div>
+            <div id="small_2" class="small" style="bottom: 0; right: 0;">
+                <img  id="small_2_picture" src="./images/3.jpg" alt="作品3">
+            </div>
         </div>
+        <script>
+            portfolio1.onclick= function(){
+              portfolioBar.className = 'bar state-1';
+              small_2_picture.className = '';
+              big_1_picture.className = '';
+              small_1.className = '';
+              small_2.className = '';
+            }
+            portfolio2.onclick= function(){
+              portfolioBar.className = 'bar state-2';
+              small_2_picture.className = 'small_2_picture_2';
+              big_1_picture.className = '';
+              small_1.className = '';
+              small_2.className = '';
+            }
+            portfolio3.onclick= function(){
+              portfolioBar.className = 'bar state-3';
+              small_2_picture.className = '';
+              big_1_picture.className = 'big_1_picture_1';
+              small_1.className = 'small-1';
+              small_2.className = 'small-2';
+            }
+        </script>     
     </section>
 </body>
 </html>

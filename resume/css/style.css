@@ -1,7 +1,6 @@
 body{
     margin: 0px;
     padding: 0px;
-    background-color: black;
 }
 
 *{
@@ -80,6 +79,8 @@ hr{
     max-width: 940px;
     margin: 0 auto;
     background-color: #ffffff;
+    margin-top: -400px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
 }
 .userCard .welcome{
     color: white;
@@ -151,4 +152,175 @@ hr{
     padding: 10px;
     vertical-align: center;
     fill: white;
+}
+.downloadResume-wrapper{
+    text-align: center;
+    margin: 30px  0px;
+}
+.downloadResume{
+    padding: 18px 60px;
+    line-height: 20px;
+    display: inline-block;
+    border: 1px solid #c0c0c0;
+    color: black;
+    transition: box-shadow 0.2s linear;
+}
+.downloadResume:hover{
+    box-shadow: 0px 3px 13px 3px rgba(0,0,0,.2);
+}
+.selfIntroduction{
+    max-width: 940px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px; 
+    line-height: 20px;
+}
+section.skills,
+section.portfolio{
+    max-width: 940px;
+    margin: 60px auto; 
+}
+section.skills h2,
+section.portfolio h2{
+    text-align: center;
+    color: #3d4451;
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+section.skills h3{
+    font-size: 14px;
+    line-height: 1.1;
+    padding-bottom: 3px;
+  }
+section.skills ol{
+    list-style: none;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    padding: 42px 10px;
+    margin: 30px 0px;
+}
+section.skills ol li:nth-child(odd){
+    width: 48%;
+    float: left;
+    box-sizing: border-box;
+    padding-bottom: 30px;
+}
+section.skills ol li:nth-child(even){
+    width: 48%;
+    float: right;
+    box-sizing: border-box;
+    padding-bottom: 30px;
+}
+section.skills ol li:nth-child(5){
+    padding-bottom: 0px;
+}
+section.skills ol li:nth-child(6){
+    padding-bottom: 0px;
+}
+section.skills ol .progressBar{
+    height: 5px;
+    background: #FAE1E1;
+    border-radius: 2px; 
+    position: relative;
+}
+section.skills ol .progress-60::before,
+section.skills ol .progress-50::before,
+section.skills ol .progress-30::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #E6686A;
+    height: 5px;
+    border-radius: 2px;
+}
+section.skills ol .progress-60::before{
+    width: 60%;
+}
+section.skills ol .progress-50::before{
+    width: 50%;
+}
+section.skills ol .progress-30::before{
+    width: 30%;
+}
+section.portfolio nav{
+    text-align: center;
+    margin: 30px 0px;
+}
+section.portfolio ol{
+    list-style: none;
+    display: inline-block;
+}
+section.portfolio ol li{
+    float: left;
+    cursor: pointer;
+}
+section.portfolio ol li:nth-child(2){
+    margin: 0px 40px;
+}
+section.portfolio nav .bar{
+    height: 5px;
+}
+section.portfolio nav  .bar.state-1  .bar-inner,
+section.portfolio nav  .bar.state-2  .bar-inner,
+section.portfolio nav  .bar.state-3  .bar-inner{
+    height: 5px;
+    background-color: #E6686A;
+    border-radius: 2px;
+    transition: all 1s;
+}
+section.portfolio nav  .bar.state-1  .bar-inner{
+    width: 35px;
+    margin-left: 350px;
+}
+section.portfolio nav  .bar.state-2  .bar-inner{
+    width: 35px;
+    margin-left: 423px;
+}
+section.portfolio nav  .bar.state-3  .bar-inner{
+    width: 95px;
+    margin-left: 495px;
+}
+section.portfolio .jobs{
+    position: relative;
+}
+section.portfolio .jobs #big_1,
+section.portfolio .jobs #small_1,
+section.portfolio .jobs #small_2{
+    position: absolute;
+    transition: all 0.4s;
+}
+section.portfolio .jobs #big_1{
+    width: 606px;
+    height: 597px;
+}
+section.portfolio .jobs #small_1,
+section.portfolio .jobs #small_2{
+    width: 293px;
+    height: 289px;
+}
+section.portfolio .jobs #big_1 img,
+section.portfolio .jobs #small_1 img,
+section.portfolio .jobs #small_2 img{
+    box-shadow: 0 0 5px 2px rgba(0,0,0,.2);
+    width: 100%;
+    height: 100%;
+}
+section.portfolio .jobs #big_1 #big_1_picture,
+section.portfolio .jobs #small_2  #small_2_picture{
+    transition: all 0.4s;
+}
+section.portfolio .jobs #small_2  #small_2_picture.small_2_picture_2{
+    transform: scale(0,0);
+    transform-origin: 50% 50% 0;
+}
+section.portfolio .jobs #big_1 #big_1_picture.big_1_picture_1{
+    transform: scale(0,0);
+    transform-origin: 100% 0% 0;
+}
+section.portfolio .jobs #small_1.small-1{
+    transform: translateX(-647px);
+}
+section.portfolio .jobs #small_2.small-2{
+    transform: translate(-313px,-311px);
 }
