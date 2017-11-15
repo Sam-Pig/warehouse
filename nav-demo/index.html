@@ -29,10 +29,13 @@
         var key = event['key'];
         var website = hash[key];
         // location.href = website(当前网站直接打开)
-        window.open(website,'_blank');
+        window.open('http://'+website,'_blank');
     }
     
-    //工具函数
+
+
+
+    /******工具函数******/
     function init(){
         var keys = {
             0:{0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
@@ -41,16 +44,16 @@
             length:3
         }
         var hash = {
-            q:'http://www.qq.com',
-            w:'https://weibo.com',
-            e:'https://www.ele.me',
-            d:'https://www.baidu.com',
-            t:'https://www.taobao.com',
-            i:'https://www.iqiyi.com',
-            a:'http://www.acfun.cn',
-            z:'https://www.zhihu.com',
-            b:'https://www.bilibili.com',
-            s:'http://www.sohu.com'
+            q:'www.qq.com',
+            w:'weibo.com',
+            e:'www.ele.me',
+            d:'www.baidu.com',
+            t:'www.taobao.com',
+            i:'www.iqiyi.com',
+            a:'www.acfun.cn',
+            z:'www.zhihu.com',
+            b:'www.bilibili.com',
+            s:'www.sohu.com'
         }
         var hashInLocalStorage = JSON.parse(localStorage.getItem('localHash') || 'null');
         if(hashInLocalStorage){
@@ -85,12 +88,12 @@
             var key = event['target']['id'];
             var x = prompt('给我一个网址');
             hash[key] = x;
-            event['target'].previousSibling.src = hash[key]+'/favicon.ico';
+            event['target'].previousSibling.src = 'http://'+hash[key]+'/favicon.ico';
             event['target'].previousSibling.onerror = function(xxx){               
                 xxx.target.src = 'https://i.loli.net/2017/11/11/5a06a47be97d5.png';
             }
             
-            localStorage.setItem('lacalHash', JSON.stringify(hash));  
+            localStorage.setItem('localHash', JSON.stringify(hash));  
         }
         return button;
     }
@@ -98,7 +101,7 @@
     function createImg(domain){
         var img = createTag('img');
         if(domain){
-            img.src = domain + '/favicon.ico';
+            img.src = 'http://'+domain + '/favicon.ico';
         }else{
             img.src = 'https://i.loli.net/2017/11/11/5a06a47be97d5.png';
         }
