@@ -5,15 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    
     <title>Canvas</title>
+    <style type="text/css">
+        .icon {
+           width: 1em; height: 1em;
+           vertical-align: -0.15em;
+           fill: currentColor;
+           overflow: hidden;
+        }
+    </style>
 </head>
 <body>
     <canvas id="canvas"></canvas>
-    <div id='actions' class='showEraser'>
-        <button id='eraser'>橡皮擦</button>
-        <button id='pen'>画笔</button>
+    <div id='actions' class='actions'>
+        <svg id='pen'class="icon active" aria-hidden="true">
+                <use xlink:href="#icon-pen"></use>
+        </svg>
+        <svg id='eraser'class="icon" aria-hidden="true" class="active">
+            <use xlink:href="#icon-erase"></use>
+        </svg>
+        <svg id='clear'class="icon" aria-hidden="true">
+            <use xlink:href="#icon-delete2"></use>
+        </svg>
+        <svg id='download'class="icon" aria-hidden="true">
+                <use xlink:href="#icon-xiazai"></use>
+        </svg>
+    </div>
+    <div id='setting'>
+        <svg id='color'class="icon" aria-hidden="true">
+            <use xlink:href="#icon-A-ZICONCopy"></use>
+        </svg>
+        <svg id='thickness'class="icon" aria-hidden="true">
+            <use xlink:href="#icon-cuxixiantiao-copy"></use>
+        </svg>
+    </div>
+    <div id='footer'>
+        <canvas id='hue'  height=10></canvas>
+        <div id='hueMove'></div>
+        <canvas id='saturation'  height=10></canvas>
+        <div id='saturationMove'></div>
+        <canvas id='lightness'   height=10></canvas>
+        <div id='lightnessMove'></div>
     </div>
     <script src="main.js"></script>
+    <script src="//at.alicdn.com/t/font_478970_smhw0os481714i.js"></script>
 </body>
 </html>

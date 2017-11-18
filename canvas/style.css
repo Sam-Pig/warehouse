@@ -3,34 +3,69 @@
     padding: 0px;
 }
 #canvas{
-    background-color: gray;
+    background-color: #d6d6d6;
     display: block;
 }
 #actions{
     position: fixed;
-    bottom: 15px;
-    left: 15px;
-    width: 50px;
-    height: 30px;
+    top: 0px;
+    left: 0px;
 }
-#eraser,#pen{
-    color: white;
-    background-color: black;
-    border: none;
+#actions .icon,
+#setting .icon{
+    width: 1.5em;
+    height:1.5em;
+    margin: 0.8em;
+    transition: all 0.3S;
+}
+#actions svg.active{
+    fill: red;
+    transform: scale(1.2);
+}
+#setting{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+}
+#footer{
+    position: absolute;
+    bottom: 0px;
     width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    line-height: 30px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    padding: 20px 0px;
 }
-.showEraser #eraser{
-    display: inline-block;
+#hue,#saturation,#lightness{
+    margin-left: 15px;
+    margin-right: 15px;
 }
-.showEraser #pen{
-    display: none;
+#lightness{
+    background: blue;
 }
-.showPen #pen{
-    display: inline-block;
+#saturation{
+    background: green;
+    margin: 20px 15px;
 }
-.showPen #eraser{
-    display: none;
+#hueMove,#saturationMove,#lightnessMove{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: black;
+}
+#hueMove{
+    position: absolute;
+    left: 8px;
+    top: 18px;
+}
+#saturationMove{
+    position: absolute;
+    left: 8px;
+    top: 48px;
+}
+#lightnessMove{
+    position: absolute;
+    left: 8px;
+    top: 78px;
 }
