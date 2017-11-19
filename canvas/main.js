@@ -220,6 +220,7 @@ function colorListenToMouse(){
         footer.addEventListener('touchmove',function(e){
             e.preventDefault();
             if(hueFlag && e.touches[0].clientX  > 7 && e.touches[0].clientX  < rightBorder){
+                e.preventDefault();
                 //条件成立则target是hueMove,clientX是hueMove距屏幕左边距离
                 hueMove.style.left = e.touches[0].clientX + 'px';
 
@@ -230,14 +231,14 @@ function colorListenToMouse(){
                 ChangeIconAndPencolor();
 
             }else if(saturationFlag && e.touches[0].clientX  > 7 && e.touches[0].clientX  < rightBorder){
-
+                e.preventDefault();
                 saturationMove.style.left = e.touches[0].clientX  + 'px';
 
                 HSL.s = 100 - Math.ceil((e.touches[0].clientX - 8) * 100 / (window.innerWidth-30)); 
                 ChangeIconAndPencolor();
 
             }else if(lightnessFlag && e.touches[0].clientX  > 7 && e.touches[0].clientX  < rightBorder){
-
+                e.preventDefault();
                 lightnessMove.style.left = e.touches[0].clientX  + 'px';
 
                 HSL.l = 100 - Math.ceil((e.touches[0].clientX - 8) * 100 / (window.innerWidth-30));
