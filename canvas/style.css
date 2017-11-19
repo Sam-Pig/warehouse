@@ -35,7 +35,7 @@
     right: 0px;
 }
 #footer{
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     width: 100%;
     display: flex;
@@ -74,22 +74,22 @@
     background-color: #1e1e1e;;
 }
 #hueMove{
-    position: absolute;
+    position: fixed;
     left: 8px;
     top: 18px;
 }
 #saturationMove{
-    position: absolute;
+    position: fixed;
     left: 8px;
     top: 48px;
 }
 #lightnessMove{
-    position: absolute;
+    position: fixed;
     left: calc(((100vw - 44px)/2));
     top: 78px;
 }
 #selectThickness{
-    position: absolute;
+    position: fixed;
     top: calc((100vh/2) - 4em);
     right: 0px;
     transition: all 0.3s;
