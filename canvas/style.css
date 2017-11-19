@@ -19,8 +19,11 @@
     transition: all 0.3S;
 }
 #actions svg.active{
-    fill: red;
+    color: red;
     transform: scale(1.2);
+}
+#color{
+    color: red;
 }
 #setting{
     position: fixed;
@@ -35,24 +38,36 @@
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    padding: 20px 0px;
+    transition: all 0.3s;
+    overflow: hidden;
+    background-color: #3b3b3b;
+}
+#footer.disappear{
+    transform: scaleY(0);
+    transform-origin: 50% 100%;
+}
+#footer.show{
+    transform: scaleY(1);
+    transform-origin: 50% 100%;
+}
+#hue{
+    margin-top: 20px;
+}
+#lightness{
+    margin-bottom: 20px;
 }
 #hue,#saturation,#lightness{
     margin-left: 15px;
     margin-right: 15px;
 }
-#lightness{
-    background: blue;
-}
 #saturation{
-    background: green;
     margin: 20px 15px;
 }
 #hueMove,#saturationMove,#lightnessMove{
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background-color: black;
+    background-color: #1e1e1e;;
 }
 #hueMove{
     position: absolute;
@@ -66,6 +81,33 @@
 }
 #lightnessMove{
     position: absolute;
-    left: 8px;
+    left: calc(((100vw - 44px)/2));
     top: 78px;
 }
+#selectThickness{
+    position: absolute;
+    top: calc((100vh/2) - 4em);
+    right: 0px;
+    transition: all 0.3s;
+}
+#selectThickness li{
+    width:2em;
+    list-style: none;
+    text-align: center;
+    padding: 0.5em;
+    height: 1em;
+    line-height: 1em;
+    color: #d6d6d6;
+    border-bottom: 1px solid gray;
+    background-color: #1e1e1e;
+    cursor: pointer;
+}
+#selectThickness.disappear{
+    transform: scaleX(0);
+    transform-origin: 100% 50%;
+}
+#selectThickness.show{
+    transform: scaleX(1);
+    transform-origin: 100% 50%;
+}
+
