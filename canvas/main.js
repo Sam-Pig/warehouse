@@ -218,6 +218,7 @@ function colorListenToMouse(){
             lightnessFlag = true;
         }
         footer.addEventListener('touchmove',function(e){
+            e.preventDefault();
             if(hueFlag && e.touches[0].clientX  > 7 && e.touches[0].clientX  < rightBorder){
                 //条件成立则target是hueMove,clientX是hueMove距屏幕左边距离
                 hueMove.style.left = e.touches[0].clientX + 'px';
