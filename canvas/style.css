@@ -1,8 +1,13 @@
 *{
     margin: 0px;
     padding: 0px;
+    user-select: none;
 }
-
+html{
+    position: fixed;
+    left: 0;
+    top: 0;
+}
 #canvas{
     background-color: #d6d6d6;
     display: block;
