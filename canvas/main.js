@@ -224,11 +224,13 @@ function colorListenToMouse(){
                 //条件成立则target是hueMove,clientX是hueMove距屏幕左边距离
                 hueMove.style.left = e.touches[0].clientX + 'px';
 
-                var hueDate=ctxHue.getImageData(Math.floor(e.touches[0].clientX)-8, 0, 1, 1);
+                var hueDate=ctxHue.getImageData(Math.floor(e.touches[0].clientX)-30, 0, 1, 1);
                 render(hueDate.data[0],hueDate.data[1],hueDate.data[2],hueDate.data[3]);
 
                 HSL.h = Math.ceil((360 / (window.innerWidth-80)) * (e.touches[0].clientX - 30)); //30是圆形开始的偏移量，80是画布两端的margin;
                 ChangeIconAndPencolor();
+                console.log(hueDate);
+                console.log(e);
 
             }else if(saturationFlag && e.touches[0].clientX  > 30 && e.touches[0].clientX  < rightBorder){
                 e.preventDefault();
@@ -236,13 +238,14 @@ function colorListenToMouse(){
 
                 HSL.s = 100 - Math.ceil((e.touches[0].clientX - 30) * 100 / (window.innerWidth-80)); 
                 ChangeIconAndPencolor();
-
+                console.log(e);
             }else if(lightnessFlag && e.touches[0].clientX  > 30 && e.touches[0].clientX  < rightBorder){
                 e.preventDefault();
                 lightnessMove.style.left = e.touches[0].clientX  + 'px';
 
                 HSL.l = 100 - Math.ceil((e.touches[0].clientX - 30) * 100 / (window.innerWidth-80));
                 ChangeIconAndPencolor();
+                console.log(e);
             }
         });
         footer.addEventListener('touchend',function(e){
