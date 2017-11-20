@@ -109,9 +109,9 @@ function setCanvasSize(){
     var pageHeight = document.documentElement.clientHeight;
     canvas.width = pageWidth;
     canvas.height = pageHeight;
-    hue.width = pageWidth-30;
-    saturation.width = pageWidth-30;
-    lightness.width =  pageWidth-30;
+    hue.width = pageWidth-80;
+    saturation.width = pageWidth-80;
+    lightness.width =  pageWidth-80;
 }
 
 function autoSetCanvasSize(canvas){
@@ -206,7 +206,7 @@ function colorListenToMouse(){
     var hueMove = document.getElementById('hueMove');
     var saturationMove = document.getElementById('saturationMove');
     var lightnessMove = document.getElementById('lightnessMove');
-    var rightBorder = window.innerWidth - 22;
+    var rightBorder = window.innerWidth - 50;
     if(document.body.ontouchstart !== undefined){
         hueMove.ontouchstart=function(e){
             hueFlag = true;
@@ -219,7 +219,7 @@ function colorListenToMouse(){
         }
         footer.addEventListener('touchmove',function(e){
             e.preventDefault();
-            if(hueFlag && e.touches[0].clientX  > 7 && e.touches[0].clientX  < rightBorder){
+            if(hueFlag && e.touches[0].clientX  > 30 && e.touches[0].clientX  < rightBorder){
                 e.preventDefault();
                 //条件成立则target是hueMove,clientX是hueMove距屏幕左边距离
                 hueMove.style.left = e.touches[0].clientX + 'px';
@@ -227,21 +227,21 @@ function colorListenToMouse(){
                 var hueDate=ctxHue.getImageData(Math.floor(e.touches[0].clientX)-8, 0, 1, 1);
                 render(hueDate.data[0],hueDate.data[1],hueDate.data[2],hueDate.data[3]);
 
-                HSL.h = Math.ceil((360 / (window.innerWidth-30)) * (e.touches[0].clientX - 8)); //8是圆形开始的便宜量，30是画布两端的margin;
+                HSL.h = Math.ceil((360 / (window.innerWidth-80)) * (e.touches[0].clientX - 30)); //30是圆形开始的偏移量，80是画布两端的margin;
                 ChangeIconAndPencolor();
 
-            }else if(saturationFlag && e.touches[0].clientX  > 7 && e.touches[0].clientX  < rightBorder){
+            }else if(saturationFlag && e.touches[0].clientX  > 30 && e.touches[0].clientX  < rightBorder){
                 e.preventDefault();
                 saturationMove.style.left = e.touches[0].clientX  + 'px';
 
-                HSL.s = 100 - Math.ceil((e.touches[0].clientX - 8) * 100 / (window.innerWidth-30)); 
+                HSL.s = 100 - Math.ceil((e.touches[0].clientX - 30) * 100 / (window.innerWidth-80)); 
                 ChangeIconAndPencolor();
 
-            }else if(lightnessFlag && e.touches[0].clientX  > 7 && e.touches[0].clientX  < rightBorder){
+            }else if(lightnessFlag && e.touches[0].clientX  > 30 && e.touches[0].clientX  < rightBorder){
                 e.preventDefault();
                 lightnessMove.style.left = e.touches[0].clientX  + 'px';
 
-                HSL.l = 100 - Math.ceil((e.touches[0].clientX - 8) * 100 / (window.innerWidth-30));
+                HSL.l = 100 - Math.ceil((e.touches[0].clientX - 30) * 100 / (window.innerWidth-80));
                 ChangeIconAndPencolor();
             }
         });
@@ -266,33 +266,33 @@ function colorListenToMouse(){
             //防止移动时出现选中现象，导致圆形移动画布被选中变成蓝色
             e.preventDefault();
  
-            if(hueFlag && e.clientX > 7 && e.clientX < rightBorder){
+            if(hueFlag && e.clientX > 30 && e.clientX < rightBorder){
 
                 //条件成立则target是hueMove,clientX是hueMove距屏幕左边距离
                 hueMove.style.left = e.clientX + 'px';
 
-                //减8是因为e.clientX是从8像素开始的（即圆心），而像素在画布上是从0开始的，所以要减8
-                var hueDate=ctxHue.getImageData(Math.floor(e.clientX)-8, 0, 1, 1);
+                //减8是因为e.clientX是从8像素开始的（即圆心），而像素在画布上是从0开始的，所以要减30
+                var hueDate=ctxHue.getImageData(Math.floor(e.clientX)-30, 0, 1, 1);
                 render(hueDate.data[0],hueDate.data[1],hueDate.data[2],hueDate.data[3]);
 
                 //根据色相计算H,使用Math.ceil()是因为为了getImageData()能够取到画布上最后一个像素的颜色，我把移动终点设置了（画布长度-1）处，所以百分比降低，需要用ceil（）向上取整
-                HSL.h = Math.ceil((360 / (window.innerWidth-30)) * (e.clientX - 8)); //8是圆形开始的便宜量，30是画布两端的margin;
+                HSL.h = Math.ceil((360 / (window.innerWidth-80)) * (e.clientX - 30)); //30是圆形开始的便宜量，80是画布两端的margin;
                 ChangeIconAndPencolor()
 
-            }else if(saturationFlag && e.clientX > 7 && e.clientX < rightBorder){
+            }else if(saturationFlag && e.clientX > 30 && e.clientX < rightBorder){
 
                 saturationMove.style.left = e.clientX + 'px';
 
                 //根据饱和度计算S，并实时改变画盘icon的颜色,100来减是因为滑动从左开始，而左边的饱和度为最大，所以用减号，让左边的值从100开始，而不是从零开始
-                HSL.s = 100 - Math.ceil((e.clientX - 8) * 100 / (window.innerWidth-30)); 
+                HSL.s = 100 - Math.ceil((e.clientX - 30) * 100 / (window.innerWidth-80)); 
                 ChangeIconAndPencolor()
                 
-            }else if(lightnessFlag && e.clientX > 7 && e.clientX < rightBorder){
+            }else if(lightnessFlag && e.clientX > 30 && e.clientX < rightBorder){
 
                 lightnessMove.style.left = e.clientX + 'px';
 
                 //根据亮度计算L,并实时改变画盘icon的颜色，笔触的颜色
-                HSL.l = 100 - Math.ceil((e.clientX - 8) * 100 / (window.innerWidth-30));
+                HSL.l = 100 - Math.ceil((e.clientX - 30) * 100 / (window.innerWidth-80));
                 ChangeIconAndPencolor()
             }  
         });
@@ -306,7 +306,7 @@ function colorListenToMouse(){
 
 function initialCanvasColor(){
     //色相画布颜色
-    var grd2 = ctxHue.createLinearGradient(0,0,window.innerWidth-30,0);
+    var grd2 = ctxHue.createLinearGradient(0,0,window.innerWidth-80,0);
     grd2.addColorStop(0,"rgb(255,0,0)");
     grd2.addColorStop(1/6,"rgb(255,255,0)");
     grd2.addColorStop(2/6,"rgb(0,255,0)");
@@ -315,28 +315,28 @@ function initialCanvasColor(){
     grd2.addColorStop(5/6,"rgb(255,0,255)");
     grd2.addColorStop(1,"rgb(255,0,0)");
     ctxHue.fillStyle=grd2;
-    ctxHue.fillRect(0,0,window.innerWidth-30,10);
+    ctxHue.fillRect(0,0,window.innerWidth-80,16);
     //饱和度画布颜色
-    var grd3 = ctxSaturation.createLinearGradient(0,0,window.innerWidth-30,0);
+    var grd3 = ctxSaturation.createLinearGradient(0,0,window.innerWidth-80,0);
     grd3.addColorStop(0,'rgba(255,0,0,1)');
     grd3.addColorStop(1,'rgba(255,255,255,1)');
     ctxSaturation.fillStyle=grd3;
-    ctxSaturation.fillRect(0,0,window.innerWidth-30,10);
+    ctxSaturation.fillRect(0,0,window.innerWidth-80,16);
     //亮度画布颜色
-    var grd4 = ctxLightness.createLinearGradient(0,0,window.innerWidth-30,0);
+    var grd4 = ctxLightness.createLinearGradient(0,0,window.innerWidth-80,0);
     grd4.addColorStop(0,'rgba(255,255,255,1)');
     grd4.addColorStop(1,'rgba(0,0,0,1)');
     ctxLightness.fillStyle=grd4;
-    ctxLightness.fillRect(0,0,window.innerWidth-30,10);
+    ctxLightness.fillRect(0,0,window.innerWidth-80,16);
 }
 
 //饱和度画布颜色随着色相变化而变化的渲染函数
 function  render(r,g,b,a){
-    var  grd1 = ctxSaturation.createLinearGradient(0,0,window.innerWidth-30,0);//水平渐变
+    var  grd1 = ctxSaturation.createLinearGradient(0,0,window.innerWidth-80,0);//水平渐变
     grd1.addColorStop(0,'rgba(' + r + ',' + g + ',' + b + ',' + a + ')');
     grd1.addColorStop(1,'rgba(255,255,255,1)');
     ctxSaturation.fillStyle=grd1;
-    ctxSaturation.fillRect(0,0,window.innerWidth-30,10);
+    ctxSaturation.fillRect(0,0,window.innerWidth-80,16);
 }
 
 function ChangeIconAndPencolor(){
