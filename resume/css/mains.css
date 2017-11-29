@@ -2,7 +2,9 @@ body{
     margin: 0px;
     padding: 0px;
 }
-
+.disappear{
+    display: none;
+}
 *{
     margin: 0px;
     padding: 0px;
@@ -25,6 +27,7 @@ hr{
     top: 0px;
     left: 0px;
     width: 100%;
+    transition: all 0.5s;
 }
 .topNavBar .logo{
     float: left;
@@ -32,6 +35,7 @@ hr{
     font-family: "Arial Black";
     font-weight: bold;
     padding: 21px;
+    transition: all 0.5s;
 }
 .topNavBar .logo .rs{
     color: #e6686a;
@@ -39,14 +43,22 @@ hr{
 .topNavBar .logo .card{
     color: #9a9da2;
 }
+.topNavBar.sticky{
+    background-color: #ffffff;
+    box-shadow: 0 0 20px 0px black;
+}
+.topNavBar.sticky .logo{
+    padding: 15px;
+}
 .navList{
     float: right;
     margin: 0;
     padding: 0;
 }
-.navList li{
+.navList > li{
     float: left;
     list-style: none;
+    position: relative;
 }
 .navList li a{
     display: block;
@@ -57,14 +69,62 @@ hr{
     font-weight: bold;
     border-bottom: 3px solid transparent;
     border-top: 3px solid transparent;
+    transition: all 0.5s;
+    position: relative;
 }
-.navList li:last-child a{
+.topNavBar.sticky .navList li a{
+    margin: 14px 17px;
+    color: black; 
+}
+.topNavBar .navList li:last-child a{
     margin-right: 34px;
+}
+.topNavBar .navList li.active a::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    height: 3px;
+    width: 100%;
+    background-color: #e86767;
+    animation: menuSlide 1s;
+}
+@keyframes menuSlide{
+    0%{
+        width:0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+.topNavBar .navList .menuTigger .submenu{
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    right: 7px;
+    display: none;
+    color: white; 
+    background-color: rgba(0,0,0,.5);
+    animation: submenuSlide 0.3s;
+}
+@keyframes submenuSlide{
+    0%{
+        margin-right: 100%;
+    }
+    100%{
+        margin-right: 0%;
+    }
+}
+.topNavBar .navList .menuTigger.active .submenu{
+    display: block;
+}
+.topNavBar .navList .menuTigger  .submenu > li{
+    white-space: nowrap;
+    margin: 10px;
+    cursor: pointer;
+}
 
-}
-.navList li a:hover{
-    border-bottom: 3px solid #e86767;
-}
 .banner{
     height: 515px;
     width: 100%;
@@ -322,4 +382,50 @@ section.portfolio .jobs #small_1.small-1{
 }
 section.portfolio .jobs #small_2.small-2{
     transform: translate(-313px,-311px);
+}
+.site-welcome{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    z-index: 3;
+    background-color: #ffffff;
+}
+.site-welcome.disappear{
+    display: none;
+}
+.loading{
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+.loading::before,
+.loading::after{
+    content: '';
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    background-color: black;
+    animation: loadingAnimation 1.5s infinite;
+}
+.loading::after{
+    animation-delay: 0.75s;
+}
+@keyframes loadingAnimation{
+    0%{
+        width: 0px; height: 0px; opacity: 1;
+    }
+    100%{
+        width: 100px; height: 100px; opacity: 0;
+    }
 }

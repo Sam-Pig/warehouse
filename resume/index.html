@@ -17,26 +17,44 @@
     </style>
 </head>
 <body>
+    <div id = 'siteWelcome' class = 'site-welcome'>
+        <div class = "loading"></div>
+    </div>
+    <div id='disappear' class='disappear'>
     <nav class="topNavBar clearfix">
-        <a class="logo " href="#" alt="logo">
+        <a class="logo" href="#" alt="logo">
             <span class="rs">RS</span>
             <span class="card">card</span>
         </a>
         <ul class="navList clearfix">
-            <li><a href="#">关于</a></li>
-            <li><a href="#">技能</a></li>
-            <li><a href="#">作品</a></li>
-            <li><a href="#">博客</a></li>
-            <li><a href="#">日历</a></li>
-            <li><a href="#">联系方式</a></li>
-            <li><a href="#">其他</a></li>
+            <li class='menuTigger'><a href="#siteAbout">关于</a></li>
+            <li class='menuTigger'><a href="#siteSkills">技能</a></li>
+            <li class='menuTigger'>
+                <a  href="#siteWorks">作品</a>
+                <ul class='submenu'>
+                    <li>作品1</li>
+                    <li>作品2</li>
+                    <li>作品3</li>
+                </ul>                
+            </li>
+            <li class='menuTigger'>
+                <a  href="#">博客</a>
+                <ul class='submenu'>
+                        <li>博客博客1</li>
+                        <li>博客博客2</li>
+                        <li>博客博客3</li>
+                    </ul> 
+            </li>
+            <li class='menuTigger'><a href="#">日历</a></li>
+            <li class='menuTigger'><a href="#">联系方式</a></li>
+            <li class='menuTigger'><a href="#">其他</a></li>
         </ul>
     </nav>
     <div class="banner">
         <div class="mask"></div>
     </div>
     <main>
-        <div class="userCard">
+        <div class="userCard" id='siteAbout'>
             <div class="pictureAndText clearfix">
                 <div class="picture">
                     <img  src="images/avatar.jpg"  alt="头像">
@@ -89,7 +107,7 @@
             了解HTML,CSS,javascript;
         </p>
     </main>
-    <section class="skills">
+    <section class="skills" id='siteSkills'>
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
@@ -118,7 +136,7 @@
             </li>
         </ol>
     </section>
-    <section class="portfolio">
+    <section class="portfolio" id='siteWorks'>
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -140,30 +158,47 @@
             <div id="small_2" class="small" style="bottom: 0; right: 0;">
                 <img  id="small_2_picture" src="./images/3.jpg" alt="作品3">
             </div>
-        </div>
-        <script>
-            portfolio1.onclick= function(){
-              portfolioBar.className = 'bar state-1';
-              small_2_picture.className = '';
-              big_1_picture.className = '';
-              small_1.className = '';
-              small_2.className = '';
-            }
-            portfolio2.onclick= function(){
-              portfolioBar.className = 'bar state-2';
-              small_2_picture.className = 'small_2_picture_2';
-              big_1_picture.className = '';
-              small_1.className = '';
-              small_2.className = '';
-            }
-            portfolio3.onclick= function(){
-              portfolioBar.className = 'bar state-3';
-              small_2_picture.className = '';
-              big_1_picture.className = 'big_1_picture_1';
-              small_1.className = 'small-1';
-              small_2.className = 'small-2';
-            }
-        </script>     
+        </div>    
     </section>
+    </div>
+    <script>
+        var siteWelcome = document.getElementById('siteWelcome');
+        var disappear = document.getElementById('disappear');
+        var topNavBar = document.getElementsByClassName('topNavBar')[0];
+
+        window.onload=function(){
+            siteWelcome.classList.add('disappear');
+            disappear.classList.remove('disappear');
+        };
+
+        window.onscroll = function(){
+            if(window.scrollY > 0){
+                topNavBar.classList.add('sticky');
+            }else{
+                topNavBar.classList.remove('sticky');
+            }
+        }
+
+        let liTags = document.querySelectorAll('nav.topNavBar > ul > li');
+        for(let i=0;i < liTags.length;i++){
+            liTags[i].onmouseenter = function(e){
+                e.currentTarget.classList.add('active');
+            }
+            liTags[i].onmouseleave = function(e){
+                e.currentTarget.classList.remove('active');
+            }
+        }
+        let aTags = document.querySelectorAll('nav.topNavBar > ul > li >a');
+        for(let i=0;i < aTags.length;i++){
+            aTags[i].onclick = function(e){
+                e.preventDefault();
+                let href = e.currentTarget.getAttribute('href');
+                let element = document.querySelector(href);
+                let top = element.offsetTop - 80;
+                window.scrollTo(0,top);
+            }
+        }
+    </script> 
+    <script src='js/main.js'></script>
 </body>
 </html>
