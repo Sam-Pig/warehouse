@@ -14,6 +14,7 @@ body{
     display: block;
     clear: both;
 }
+
 a{
     text-decoration: none;
 }
@@ -22,12 +23,20 @@ hr{
     border: none;
     border-bottom: 1px solid #d4d4d4;
 }
+[data-x].offset{
+    transform: translateY(100px);
+  }
+[data-x]{
+    transform: translateY(0);
+    transition: all 0.8s;
+}
 .topNavBar{
     position: fixed;
     top: 0px;
     left: 0px;
     width: 100%;
     transition: all 0.5s;
+    z-index: 3;
 }
 .topNavBar .logo{
     float: left;
@@ -79,7 +88,8 @@ hr{
 .topNavBar .navList li:last-child a{
     margin-right: 34px;
 }
-.topNavBar .navList li.active a::after{
+.topNavBar .navList li.active a::after,
+.topNavBar .navList li.highlight a::after{
     content: '';
     display: block;
     position: absolute;
@@ -282,6 +292,12 @@ section.skills ol .progressBar{
     background: #FAE1E1;
     border-radius: 2px; 
     position: relative;
+    transform: scaleX(1);
+    transform-origin: 0% 0%;
+    transition: all 2s;
+}
+section.skills ol .progressBar.contraction{
+    transform: scaleX(0);
 }
 section.skills ol .progress-60::before,
 section.skills ol .progress-50::before,
@@ -392,7 +408,7 @@ section.portfolio .jobs #small_2.small-2{
     justify-content: center;
     align-content: center;
     align-items: center;
-    z-index: 3;
+    z-index: 5;
     background-color: #ffffff;
 }
 .site-welcome.disappear{

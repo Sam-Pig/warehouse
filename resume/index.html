@@ -53,8 +53,8 @@
     <div class="banner">
         <div class="mask"></div>
     </div>
-    <main>
-        <div class="userCard" id='siteAbout'>
+    <main data-x id='siteAbout' class='offset'>
+        <div class="userCard">
             <div class="pictureAndText clearfix">
                 <div class="picture">
                     <img  src="images/avatar.jpg"  alt="头像">
@@ -107,36 +107,36 @@
             了解HTML,CSS,javascript;
         </p>
     </main>
-    <section class="skills" id='siteSkills'>
+    <section  data-x  class="skills" id='siteSkills'>
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
                 <h3>HTML 5 &amp; CSS 3</h3>
-                <div class="progressBar progress-60"></div>
+                <div class="progressBar progress-60 contraction"></div>
             </li>
             <li>
                 <h3>JavaScript</h3>
-                <div class="progressBar progress-50"></div>
+                <div class="progressBar progress-50 contraction"></div>
             </li>
             <li>
                 <h3>jQuery</h3>
-                <div class="progressBar progress-50"></div>
+                <div class="progressBar progress-50 contraction"></div>
             </li>
             <li>
                 <h3>VUE.js</h3>
-                <div class="progressBar progress-30"></div>
+                <div class="progressBar progress-30 contraction"></div>
             </li>
             <li>
                 <h3>React.js</h3>
-                <div class="progressBar progress-30"></div>
+                <div class="progressBar progress-30 contraction"></div>
             </li>
             <li>
                 <h3>Node.js</h3>
-                <div class="progressBar progress-30"></div>
+                <div class="progressBar progress-30 contraction"></div>
             </li>
         </ol>
     </section>
-    <section class="portfolio" id='siteWorks'>
+    <section  data-x class="portfolio" id='siteWorks'>
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -161,14 +161,19 @@
         </div>    
     </section>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
     <script>
         var siteWelcome = document.getElementById('siteWelcome');
         var disappear = document.getElementById('disappear');
         var topNavBar = document.getElementsByClassName('topNavBar')[0];
-
+        let specialTags = document.querySelectorAll('[data-x]');
+        let progressBar = document.querySelectorAll('.progressBar');
+        
         window.onload=function(){
             siteWelcome.classList.add('disappear');
             disappear.classList.remove('disappear');
+            findClosestElementToWindowTop();
+            findElementExceedWindowBottom();
         };
 
         window.onscroll = function(){
@@ -177,6 +182,56 @@
             }else{
                 topNavBar.classList.remove('sticky');
             }
+            
+            findClosestElementToWindowTop();
+
+            findElementExceedWindowBottom();
+        }
+
+        
+        function findElementExceedWindowBottom(){
+            var windowBottomY = document.documentElement.clientHeight + window.scrollY;
+            
+            for(let i =0;i<specialTags.length; i++){
+                var elementY = specialTags[i].offsetTop;
+                if((elementY - windowBottomY) < 0){
+                    specialTags[i].classList.remove('offset');
+                }else{
+                    specialTags[i].classList.add('offset');
+                }
+            }
+          
+            for(let j =0;j<progressBar.length; j++){
+                //不用offsetTop是因为，元素的offsetParent是section.skills，而不是<body>
+                var progressBarY = progressBar[j].getBoundingClientRect().top + document.documentElement.scrollTop;
+                
+                if((progressBarY - windowBottomY) < 0){
+                    progressBar[j].classList.remove('contraction');
+                }else{
+                    progressBar[j].classList.add('contraction');
+                }
+            }
+
+        }
+
+        function findClosestElementToWindowTop(){
+            let specialTags = document.querySelectorAll('[data-x]')
+            let minIndex = 0
+            for(let i =1;i<specialTags.length; i++){
+              if(Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)){
+                //存储最近元素的下标
+                minIndex = i
+              }
+            }
+            // minIndex 就是里窗口顶部最近的元素
+            let id = specialTags[minIndex].id
+            let a = document.querySelector('a[href="#'+ id + '"]')
+            let li = a.parentNode;
+            let brothersAndMe = li.parentNode.children;
+            for(let i=0; i<brothersAndMe.length; i++){
+              brothersAndMe[i].classList.remove('highlight');
+            }
+            li.classList.add('highlight');
         }
 
         let liTags = document.querySelectorAll('nav.topNavBar > ul > li');
@@ -188,15 +243,31 @@
                 e.currentTarget.classList.remove('active');
             }
         }
+
         let aTags = document.querySelectorAll('nav.topNavBar > ul > li >a');
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
+        }
+        requestAnimationFrame(animate);
         for(let i=0;i < aTags.length;i++){
             aTags[i].onclick = function(e){
                 e.preventDefault();
                 let href = e.currentTarget.getAttribute('href');
                 let element = document.querySelector(href);
-                let top = element.offsetTop - 80;
-                window.scrollTo(0,top);
-            }
+                let targetY = element.offsetTop - 80;
+                let currentY = window.scrollY;
+                var t = Math.abs(((targetY-currentY)/100)*300) // 时间
+                if(t>500){ t = 500 }
+                var coords = { x: 0, y: currentY }; 
+                var tween = new TWEEN.Tween(coords) 
+                .to({ x: 0, y: targetY }, t) 
+                .easing(TWEEN.Easing.Cubic.InOut) 
+                .onUpdate(function() { 
+                    window.scrollTo(0,coords.y);
+                })
+                .start();
+           }
         }
     </script> 
     <script src='js/main.js'></script>
