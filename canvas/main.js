@@ -131,6 +131,7 @@ function drawLine(x1,y1,x2,y2,penColor,penWidth){
     ctx.beginPath();
     ctx.moveTo(x1,y1);
     ctx.lineWidth = penWidth;
+    ctx.lineCap = 'round';
     ctx.lineTo(x2,y2);
     ctx.strokeStyle = penColor;
     ctx.stroke();
