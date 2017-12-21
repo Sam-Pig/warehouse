@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="dist/style.css">
+    <script src='dist/jquery-3.2.1.min.js'></script>
+    <script>
+        var pageWidth = document.documentElement.clientWidth;
+        document.write('<style>html{font-size:' + pageWidth + 'px;}</style>');
+    </script>
+</head>
+<body>
+    <div class='outer clearfix' id='outer'>
+        <div class='df'>
+            <video class='Display' id='Display' src="src/tobeornottobe.mp4" controls ></video>
+            <div class='initialDanmu' id='initialDanmu'> </div>
+            <div class='addDanmu' id='addDanmu'></div>
+        </div>
+        
+        <div class='operating clearfix' id='operating'>
+            <input class='input' id='input'>
+            <button class='send' id='send'>send</button>
+            <button class='deleteButton'>Delete</button>
+            <button class='closeOrOpen clearfix'>
+                <span class='switchButton on'>ON</span>
+            </button>
+        </div>
+    </div>
+    <script src='dist/main.js'></script>
+</body>
+</html>
