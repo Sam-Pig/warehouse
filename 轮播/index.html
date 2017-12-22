@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='jquery.min.js'></script>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        .main{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .outer{
+            width: 400px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        .inner{
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            transition: all 0.5s linear;
+        }
+        .buttons > span{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: #d6d6d6;
+        }
+        .buttons > .blue{
+            box-shadow: 0 0  2px 1px  #5482a3;
+            background-color: #5482a3;
+        }
+        @media screen and (max-width: 400px){
+            img,
+            .outer{
+                width: 300px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class='main'>
+        <div class='outer'>
+            <div class='inner'>
+                <img src='flying.png' alt='aircraft'>
+                <img src='car.png' alt='car'>
+                <img src='bus.png' alt='bus'>
+                <img src='boat.png' alt='boat'>
+                <img src='coast.png' alt='coast'>
+            </div>
+        </div>
+        <div class='buttons'>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <script>
+        var allButtons = $('.buttons > span');
+        var n = 1;
+
+        for (let i = 0; i < allButtons.length; i++) {
+          $(allButtons[i]).on('click', function(e) {
+            var index = $(e.currentTarget).index();
+            var moveDistance = index * $('.outer')[0].clientWidth;
+            $('.inner').css({
+              transform: 'translate(-' + moveDistance + 'px)'
+            })
+            n = index;
+            activeButton($(allButtons[i]));
+          })
+        }
+        
+        var timeId = setInterval(function(){
+            $($(allButtons[n % allButtons.length])).trigger('click');
+            n = n + 1
+        },1500)
+
+        $('.outer').on('mouseenter', function() {
+            window.clearInterval(timeId);
+        })
+
+        $('.outer').on('mouseleave', function() {
+           timeId = setTimer();
+        })
+
+        function activeButton($button) {
+           $button.addClass('blue')
+           .siblings('.blue').removeClass('blue');
+        }
+
+        function setTimer() {
+            return setInterval(function(){
+                $($(allButtons[n % allButtons.length])).trigger('click');
+                n = n + 1;
+            },1500)
+        }
+        
+    </script>
+</body>
+</html>
