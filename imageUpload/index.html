@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .image{
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+        .image .mask{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: rgba(0,0,0,.5);
+            color: white;
+            line-height: 100px;
+            text-align: center;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: none;
+        }
+        .image:hover{
+            cursor: pointer;
+        }
+        .image:hover .mask{
+            display: block;
+        }
+        .image input[type=file]{
+            position: absolute;
+            border: 1px solid red;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            z-index: 1;
+            cursor: pointer;
+        }
+        .image img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class='image'>
+        <img src='avatar.jpg'>
+        <div class='mask'>编辑</div>
+        <input id="imageInput" type="file">
+    </div>
+    <script>
+        var changeImage = document.getElementById('imageInput');
+
+        changeImage.onclick = function(e){
+            var formData = new FormData();
+            var request = new XMLHttpRequest();
+            request.open("POST", "xxx",true);
+            request.send(formData);
+        }
+    </script>
+</body>
+</html>
