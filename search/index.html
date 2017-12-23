@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='//at.alicdn.com/t/font_518803_f8m4wkpyedu6jemi.js'></script>
+    <style>
+        .icon {
+
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        .clearfix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        body{
+            margin: 0px;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+        }
+        .outer{
+            position: relative;
+        }
+        .outer .inputWrapper,
+        .outer .button{
+            float: left;
+        }
+        .outer .inputWrapper .input,
+        .outer  .button{
+            height: 35px;
+            font-size: 15px;
+        }
+        .outer .inputWrapper .input{
+            border: 1px solid #b8b8b8;
+            width: 540px;
+            font-size: 15px;
+            padding-left: 8px;
+        }
+        .outer .button{
+            border: none;
+            width: 96px;
+            background-color: #3781f0;
+            color: white;
+        }
+        .outer .button:focus{
+            outline: none;
+        }
+        .outer .inputWrapper .input:focus{
+            outline: none;
+            border-color: #4b94fc;
+        }
+        .outer .inputWrapper{
+            position: relative;
+        }
+        .outer .inputWrapper .icon{
+            width: 20px;
+            height: 20px;
+            color: gray;
+        }
+        .outer .inputWrapper .iconOne{
+            border-right: 1px solid gray;
+        }
+        .outer .inputWrapper .iconTwo{
+            padding: 0px 10px;
+        }
+        .outer .iconWrapper{
+            position: absolute;
+            right: 0px;
+            top: 7.5px;
+        }
+        .outer ul{
+            display: none;
+        }
+        .outer .active{
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: 0px;
+            width: 540px;
+            margin: 0px;
+            padding: 0px;
+            border-bottom: 1px solid #b8b8b8;
+            border-left: 1px solid #b8b8b8;
+            border-right: 1px solid #b8b8b8;
+        }
+        .outer ul li{
+            list-style: none;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class='outer clearfix'>
+        <span class='inputWrapper'>
+            <input class='input' type="text">
+            <span class='iconWrapper'>
+                <span class='iconOne'>
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-yuyin"></use>
+                        </svg>
+                    </span>
+                    <span class='iconTwo'>
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-iconzhaoxiangji"></use>
+                        </svg>
+                    </span>
+            </span>
+        </span>
+        <button class='button'>百度一下</button>
+        <ul class='suggestion'>
+            <li>qwerty</li>
+            <li>uiopasdf</li>
+            <li>ghjklzxcvb</li>
+            <li>nmqwertyhuuu</li>
+            <li>dgdfgfhgfhgjhgkyuu</li>
+        </ul>
+    </div>
+    <script>
+        var textInput = document.getElementsByClassName('input')[0];
+        var suggestion = document.getElementsByClassName('suggestion')[0];
+        textInput.oninput = function(e){
+            if(textInput.value){
+                suggestion.classList.add('active')
+            }else{
+                suggestion.classList.remove('active')
+           }
+        }
+    </script>
+</body>
+</html>
