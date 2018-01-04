@@ -87,6 +87,14 @@
            timeId = setInterval(setAutoTimer,3000);
         })
 
+        document.addEventListener('visibilitychange',function(){
+            if(document.hidden) {
+                window.clearInterval(timeId);
+            }else{
+                timeId = setInterval(setAutoTimer,3000);
+            }
+        })
+
         for(let j = 0;j < $(`.buttons > span`).length;j++){
             $($(`.buttons > span`)[j]).on('click',function(){
                 window.clearInterval(timeId); 
