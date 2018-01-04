@@ -57,24 +57,23 @@
             </div>
         </div>
         <div class='iconShow' id='iconShow'>
-            <img src="flying.png" alt="flying" id='flyingIcon' class='img' width=60 height=50>
-            <img src="coast.png" alt="coast" id='coastIcon' class='img' width=60 height=50>
-            <img src="car.png" alt="car" id='carIcon' class='img' width=60 height=50>
-            <img src="bus.png" alt="bus" id='busIcon' class='img' width=60 height=50>
-            <img src="boat.png" alt="boat" id='boatIcon' class='img' width=60 height=50>
+            <img src="flying.png" alt="flying" id='flyingIcon'  width=60 height=50>
+            <img src="coast.png" alt="coast" id='coastIcon'  width=60 height=50>
+            <img src="car.png" alt="car" id='carIcon' width=60 height=50>
+            <img src="bus.png" alt="bus" id='busIcon' width=60 height=50>
+            <img src="boat.png" alt="boat" id='boatIcon'  width=60 height=50>
         </div>
     </div>
     <script>
-        document.getElementsByClassName('img').onload=function(){
-        var $imgIcons = $('#iconShow img');
-        $('#iconShow img').on('click',function(e){
+        $(window).on("load", function() {
+            var $imgIcons = $('#iconShow img');
+            $('#iconShow img').on('click',function(e){
             var imgIndex = $('#iconShow img').index(this);
             var moveDistance = imgIndex * 600;
             $('#inner').css({transform: 'translate(-' + moveDistance + 'px)'});
             $(e.currentTarget).addClass('shadow').siblings().removeClass('shadow');
-        })
-        }
-        
+            })
+        });
     </script>
 </body>
 </html>
