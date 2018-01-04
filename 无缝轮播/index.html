@@ -72,7 +72,8 @@
         </div>
     </div>
     <script>
-        var n = 1;
+        $(document).ready(function(){
+            var n = 1;
         var k;
         var tempId;
         var allButtons = $('.buttons > span');
@@ -155,6 +156,8 @@
         function activeButton($button){
            $button.addClass('blue').siblings('.blue').removeClass('blue');
         }
+        });
+        
     </script>
 </body>
 </html>
