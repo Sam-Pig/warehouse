@@ -65,6 +65,7 @@
         </div>
     </div>
     <script>
+        window.onload=function(){
         var $imgIcons = $('#iconShow img');
         $('#iconShow img').on('click',function(e){
             var imgIndex = $('#iconShow img').index(this);
@@ -72,6 +73,8 @@
             $('#inner').css({transform: 'translate(-' + moveDistance + 'px)'});
             $(e.currentTarget).addClass('shadow').siblings().removeClass('shadow');
         })
+        }
+        
     </script>
 </body>
 </html>
