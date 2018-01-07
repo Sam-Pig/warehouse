@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>您账户的余额是：<span id='amount'>&&&amount&&&</span></p>
+    <button id='button'>打钱</button>
+    <script>
+        /******************************方法1******************************
+        button.addEventListener('click',function(e){
+            let script = document.createElement('script');
+            let functionName = 'wobenng' + parseInt(Math.random()*100000,10);
+
+            window[functionName] = function(result){
+                if(result === 'success'){
+                    amount.innerText = amount.innerText - 1; 
+                }
+            }
+            script.src = 'http://hangbin.com:8002/pay?callback=' + functionName;
+            document.body.appendChild(script)
+            script.onload = function(e){
+                e.currentTarget.remove();
+                delete window[functionName]
+                
+            }
+            script.onerror = function(e){   
+                e.currentTarget.remove();
+                delete window[functionName]
+            }
+        })
+        **********************************方法1*******************************/
+
+
+        button.addEventListener('click',function(e){
+            $.ajax({
+                dataType: "jsonp",
+                url: 'http://hangbin.com:8002/pay',
+                success: function(response){
+                    if(response === 'success'){
+                        amount.innerText = amount.innerText - 1; 
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>
