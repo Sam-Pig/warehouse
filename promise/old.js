@@ -32,8 +32,6 @@ window.jQuery = function(){};
         console.log(x);
       },
       failFn: function(x){
-        console.log(x)
-        console.log(x.status)
         console.log(x.responseText)
       }
     })
