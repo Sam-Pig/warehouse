@@ -2,6 +2,16 @@ body{
     margin: 0px;
     padding: 0px;
 }
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+ }
+ .swiper-container {
+     width: 600px;
+     height: 450px;
+ }
 .disappear{
     display: none;
 }
@@ -14,7 +24,6 @@ body{
     display: block;
     clear: both;
 }
-
 a{
     text-decoration: none;
 }
@@ -444,4 +453,22 @@ section.portfolio .jobs #small_2.small-2{
     100%{
         width: 100px; height: 100px; opacity: 0;
     }
+}
+.swiper-container-outer{
+    position: relative;
+}
+.swiper-button-prev,
+.swiper-button-next{
+    position: absolute;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.swiper-button-prev{
+    left: 300px;
+}
+.swiper-button-next{
+    right: 300px;
 }
