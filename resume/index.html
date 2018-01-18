@@ -38,7 +38,7 @@
                             <li>博客博客3</li>
                         </ul> 
                 </li>
-                <li class='menuTigger'><a href="#">日历</a></li>
+                <li class='menuTigger'><a href="#messagePart">留言</a></li>
                 <li class='menuTigger'><a href="#">联系方式</a></li>
                 <li class='menuTigger'><a href="#">其他</a></li>
             </ul>
@@ -153,22 +153,40 @@
                 </div>
             </div>    
         </section>
+        <section data-x id="messagePart" class="messagePart">
+            <h2>留言板</h2>
+            <form id="messageForm" class="messageForm">
+                <table >
+                    <tr>
+                        <td style="vertical-align:top" width=50>姓名:</td>
+                        <td><input type="text" name='username'></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:top">留言:</td>
+                        <td><textarea type="text" name='content' rows="5" cols="80"></textarea></td>
+                    </tr>
+                    <tr><td><input type="submit" value="提交"></td></tr>
+                </table>
+                <ol id="messageList"></ol>     
+            </form>
+        </section>
     </div>
+    <!--
     <div class="swiper-container-outer">
         <div class="swiper-container">
-            <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <img src="images/canvas.jpg" class="swiper-slide">
                 <img src="images/lunbo.jpg" class="swiper-slide">
                 <img src="images/nav.jpg" class="swiper-slide">
             </div>
-            <!-- If we need pagination -->
             <div class="swiper-pagination"></div>    
-            <!-- If we need navigation buttons -->
         </div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
     </div>
+    -->
+    
+    <script src="//cdn1.lncld.net/static/js/3.5.0/av-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.0/js/swiper.min.js"></script>
     <script src='js/init-swiper.js'></script>
@@ -176,8 +194,6 @@
     <script src='js/topBar.js'></script>
     <script src='js/smoothly-navgation.js'></script>
     <script src='js/portfolio-translation.js'></script>
-    <script>
-  
-    </script>
+    <script src='js/message.js'></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+/*
 !function(){
     let view = document.querySelector(".swiper-container-outer");
     let controller = {
@@ -22,4 +23,4 @@
         }
     }
     controller.init(view)
-}.call()
+}.call()*/
