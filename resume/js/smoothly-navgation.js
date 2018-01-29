@@ -1,7 +1,7 @@
 !function(){
-    let view = document.querySelector('nav.topNavBar');
-    let controller = {
-        view: null,
+    let view = View('nav.topNavBar');
+    let model = null;
+    let controller = Controller({
         aTags: null,
         initAnimation: function(){
             function animate(time) {
@@ -24,7 +24,7 @@
             })
             .start();
         },
-        bindEvent: function(){
+        bindEvents: function(){
             this.aTags = this.view.querySelectorAll('ul > li >a');
             for(let i=0;i < this.aTags.length;i++){
                 this.aTags[i].onclick = (e)=>{
@@ -35,11 +35,9 @@
                }
             }
         },
-        init: function(view){
-            this.view = view;
+        init: function(view,model){
             this.initAnimation();
-            this.bindEvent()
         }
-    }
+    })
     controller.init(view)
 }.call()

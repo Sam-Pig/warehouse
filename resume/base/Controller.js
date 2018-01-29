@@ -18,6 +18,5 @@ window.Controller = function(options){
         }
     }
     console.log(object)
-    return object
-    
+    return object 
 }
