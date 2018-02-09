@@ -1,7 +1,6 @@
 body{
     margin: 0px;
     padding: 0px;
-    font-family: Arial;
 }
 .icon {
     width: 1em; height: 1em;
@@ -204,7 +203,6 @@ hr{
     float: left;
     width: 30%;
     padding: 8px 0px;
-    font-weight: bold;
 }
 .userCard .pictureAndText .text dd{
     float: left;
