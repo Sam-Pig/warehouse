@@ -1,4 +1,8 @@
-!function(){
+import View from '../base/View.js';
+import Model from '../base/Model.js';
+import Controller from '../base/Controller.js';
+
+function topBar(){
     let view = document.querySelector('nav.topNavBar');
     let controller = {
         view: null,
@@ -25,4 +29,6 @@
         }
     }
     controller.init(view)
-}.call()
+}
+
+export default topBar;

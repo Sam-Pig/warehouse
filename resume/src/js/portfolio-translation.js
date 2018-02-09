@@ -1,4 +1,8 @@
-!function(){
+import View from '../base/View.js';
+import Model from '../base/Model.js';
+import Controller from '../base/Controller.js';
+
+function portfolioTranslation(){
     let view = document.querySelector('.portfolio');
     let controller = function(view){
         let portfolio1 = view.querySelector('#portfolio1');
@@ -33,8 +37,8 @@
         }
     }
     controller(view)
-}.call()
+}
 
-
+export default portfolioTranslation;
 
 

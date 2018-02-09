@@ -1,4 +1,8 @@
-!function(){
+import View from '../base/View.js';
+import Model from '../base/Model.js';
+import Controller from '../base/Controller.js';
+
+function Navigation(){
     let view = View('nav.topNavBar');
     let model = null;
     let controller = Controller({
@@ -40,4 +44,6 @@
         }
     })
     controller.init(view)
-}.call()
+}
+
+export default Navigation;

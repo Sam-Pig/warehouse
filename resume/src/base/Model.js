@@ -22,3 +22,5 @@ window.Model = function(options){
         } 
     }
 }
+
+export default Model;

@@ -1,4 +1,8 @@
-!function(){
+import View from '../base/View.js';
+import Model from '../base/Model.js';
+import Controller from '../base/Controller.js';
+
+function Message(){
     let view = View('#messagePart');
     let model = Model({resourceName: 'Message'});
     let controller = Controller({
@@ -96,7 +100,7 @@
         }
     };*/
     controller.init(view,model);
-}.call()
+}
 
 /*
 var TestObject = AV.Object.extend('TestObject');
@@ -107,3 +111,5 @@ testObject.save({
   alert('LeanCloud Rocks!');
 })
 */
+
+export default Message;

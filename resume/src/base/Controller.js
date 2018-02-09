@@ -20,3 +20,5 @@ window.Controller = function(options){
     console.log(object)
     return object 
 }
+
+export default Controller;
