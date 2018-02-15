@@ -18,7 +18,7 @@ var server = http.createServer(function(request, response){
   /******** 从这里开始看，上面不要看 ************/
 
 
-  if(path === '/token'){
+  if(path === '/uptoken'){
       response.statusCode = 200;
       response.setHeader('Content-Type', 'text/json;charset=utf-8');
       response.setHeader('Access-Control-Allow-Origin', '*');
@@ -30,7 +30,7 @@ var server = http.createServer(function(request, response){
 
       var mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
       var options = {
-        scope: "163music-demo",
+        scope: "163music",
       };
       var putPolicy = new qiniu.rs.PutPolicy(options);
       var uploadToken=putPolicy.uploadToken(mac);

@@ -1,0 +1,97 @@
+/*统一样式*/
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+ul,ol{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+body{
+    font-size: 16px;
+}
+/*默认样式*/
+.page{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+.page aside{
+    width: 30%;
+}
+.page .newSongsInformation{
+    flex-grow: 1;
+}
+/*aside*/
+.uploadArea{
+    height: 150px;
+    width: 60%;
+    margin: 20px 20%;
+    border: 2px dashed gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+.pickfiles{
+    width: 100px;
+    height: 75px;
+    background-color: transparent;
+    border: none;
+    opacity: .5;
+    outline: none;
+}
+.title{
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+}
+.songList li{
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    margin: 20px;
+}
+.songList li.active{
+    background-color: #c5c5c5;
+    margin-right: 0px;
+}
+.songListOuter{
+    flex-grow: 1;
+}
+.siderbar{
+    display: flex;
+    flex-direction: column;
+}
+
+/*main*/
+main{
+    width: 100%;
+    background-color: #c3c3c3;
+}
+main form{
+    width:100%;
+    padding: 20px;
+}
+main form .row label{
+    display: inline-block;
+    width: 40px;
+}
+main form .row  input[type=text]{
+    padding: 5px;
+    margin: 10px;
+    font-size: 16px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+main form .row input[type=submit]{
+    font-size: 16px;
+    padding: 5px;
+    margin: 10px;
+    width: 80px;
+    border: none;
+    border-radius: 5px;
+}
