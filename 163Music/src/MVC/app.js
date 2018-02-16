@@ -1,13 +1,4 @@
 {
-    var APP_ID = 'I2eQgmCkOGJgw1RRewtUhs56-gzGzoHsz';
-    var APP_KEY = 'jFCACCnJIaKy02vFADK4JxAA';
-    
-    AV.init({
-      appId: APP_ID,
-      appKey: APP_KEY
-    });
-
-    window.app = {};
 
     var uploader = Qiniu.uploader({
         runtimes: 'html5',      // 上传模式，依次退化
@@ -72,8 +63,9 @@
                     var response = JSON.parse(info.response);
                     var sourceLink = "http://"+domain +"/"+ encodeURIComponent(response.key); 
                     window.eventHub.emit('upload',{
-                        link: sourceLink,
-                        key: response.key
+                        url: sourceLink,
+                        name: response.key,
+                        singer: '',
                     })
             },
             'Error': function(up, err, errTip) {

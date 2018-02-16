@@ -46,7 +46,7 @@ body{
 }
 .title{
     text-align: center;
-    padding-bottom: 10px;
+    padding: 10px 0px;
     border-bottom: 1px solid #333;
 }
 .songList li{
@@ -87,7 +87,7 @@ main form .row  input[type=text]{
     border: 1px solid gray;
     border-radius: 5px;
 }
-main form .row input[type=submit]{
+main form .row button{
     font-size: 16px;
     padding: 5px;
     margin: 10px;
