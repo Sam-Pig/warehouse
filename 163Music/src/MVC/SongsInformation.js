@@ -10,10 +10,10 @@ let view = {
             <label>歌手</label><input type="text" name="singer" value="__singer__">
         </div>
         <div class="row">
-            <label>外链</label><input type="text" value="__url__" name="url">
+            <label>外链</label><input type="text" value="__url__" name="url" readonly>
         </div>
         <div class="row">
-            <label></label><button type="submit">保存</button>
+            <label></label><button type="submit" disabled="true" class="submitButton">保存</button>
         </div>
     </form>
     ` ,
@@ -47,7 +47,6 @@ let model = {
         return song.save().then((newSong)=>{
           let {id,attributes} = newSong;
           Object.assign(this.data, { id, ...attributes })
-          console.log(this.data)
         },  (error)=>{
           console.error(error);
         });
@@ -59,9 +58,7 @@ let controller = {
         this.model = model;
         this.view.render();
         this.bindEvents();
-        window.eventHub.on('upload',(data)=>{
-            this.view.render(data)
-        })
+        this.bindEventHub();
     },
     bindEvents(){
         $(this.view.el).on('submit', 'form', (e)=>{
@@ -71,12 +68,36 @@ let controller = {
             needs.map((string)=>{
               data[string] = $(this.view.el).find(`[name="${string}"]`).val()
             })
-            this.model.saveSong(data)
-              .then(()=>{
+            if(this.model.data.id){
+                data['id'] = this.model.data.id;
+                // 第一个参数是 className，第二个参数是 objectId
+                var song = AV.Object.createWithoutData('Song', this.model.data.id);
+                // 修改属性
+                song.set('name', data.name);
+                song.set('singer', data.singer);
+                // 保存到云端
+                song.save();
+                window.eventHub.emit('updated',data)
+            }else{
+                this.model.saveSong(data)
+                .then(()=>{
                 this.view.reset();
-                window.eventHub.emit('create',data)
-              })
-          })
+                    window.eventHub.emit('create',data);
+                })
+            }
+        })
+    },
+    bindEventHub(){
+        window.eventHub.on('upload',(data)=>{
+            this.view.render(data);
+        })
+        window.eventHub.on('select',(data)=>{
+            this.model.data = data;
+            this.view.render(this.model.data);
+        })
+        window.eventHub.on('activeButton',()=>{
+            $('.submitButton').removeAttr('disabled');
+        })
     }
 }
 controller.init(view,model);

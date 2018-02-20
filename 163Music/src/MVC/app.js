@@ -67,6 +67,7 @@
                         name: response.key,
                         singer: '',
                     })
+                    window.eventHub.emit('activeButton',null);
             },
             'Error': function(up, err, errTip) {
                    //上传出错时，处理相关的事情
