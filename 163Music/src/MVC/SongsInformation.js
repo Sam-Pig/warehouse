@@ -50,6 +50,14 @@ let model = {
         },  (error)=>{
           console.error(error);
         });
+    },
+    updated(data){
+        var song = AV.Object.createWithoutData('Song', this.data.id);
+        // 修改属性
+        song.set('name', data.name);
+        song.set('singer', data.singer);
+        // 保存到云端
+        song.save();
     }
 };
 let controller = {
@@ -70,14 +78,9 @@ let controller = {
             })
             if(this.model.data.id){
                 data['id'] = this.model.data.id;
-                // 第一个参数是 className，第二个参数是 objectId
-                var song = AV.Object.createWithoutData('Song', this.model.data.id);
-                // 修改属性
-                song.set('name', data.name);
-                song.set('singer', data.singer);
-                // 保存到云端
-                song.save();
+                this.model.updated(data)
                 window.eventHub.emit('updated',data)
+                this.view.reset();
             }else{
                 this.model.saveSong(data)
                 .then(()=>{
