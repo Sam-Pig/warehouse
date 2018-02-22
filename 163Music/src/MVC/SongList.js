@@ -81,6 +81,13 @@
                 })
                 this.view.render(this.model.data);
             })
+            window.eventHub.on('zoomOutOrIn',()=>{
+                if($(this.view.el).parent().hasClass('hide')){
+                    $(this.view.el).parent().removeClass('hide')
+                }else{
+                    $(this.view.el).parent().addClass('hide')
+                }
+            })
         }
     }
     controller.init(view,model);
