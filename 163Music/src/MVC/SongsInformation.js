@@ -101,6 +101,15 @@ let controller = {
         window.eventHub.on('activeButton',()=>{
             $('.submitButton').removeAttr('disabled');
         })
+
+        window.eventHub.on('SongAddOrSongList',(data)=>{
+            if( data.add === true && data.list === false){
+                $(this.view.el).removeClass('hide');
+            }else if(data.add === false && data.list === true){
+                $(this.view.el).addClass('hide');
+            }
+            
+        })
     }
 }
 controller.init(view,model);

@@ -83,9 +83,26 @@
             })
             window.eventHub.on('zoomOutOrIn',()=>{
                 if($(this.view.el).parent().hasClass('hide')){
-                    $(this.view.el).parent().removeClass('hide')
+                    $(this.view.el).parent().removeClass('hide');
                 }else{
                     $(this.view.el).parent().addClass('hide')
+                }
+
+                if($(this.view.el).hasClass('hide')){
+                    $(this.view.el).removeClass('hide');
+                    $(this.view.el).siblings('.uploadArea').removeClass('hide');
+                    $('.myMusic').removeClass('hide');
+                }else{
+                    $('.myMusic').addClass('hide');
+                    $(this.view.el).addClass('hide');
+                    $(this.view.el).siblings('.uploadArea').addClass('hide');
+                }
+            })
+            window.eventHub.on('SongAddOrSongList',(data)=>{
+                if(data.add === true && data.list === false){
+                    $(this.view.el).addClass('hide');
+                }else if(data.add === false && data.list === true){
+                    $(this.view.el).removeClass('hide');
                 }
             })
         }

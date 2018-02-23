@@ -74,14 +74,17 @@ header span:nth-child(4){
 }
 /*aside*/
 .uploadArea{
-    height: 150px;
-    width: 60%;
-    margin: 20px 20%;
+    height: 100px;
+    width: 80%;
+    margin: 20px 10%;
     border: 2px dashed gray;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
+}
+.uploadArea.hide{
+    display: none;
 }
 .pickfiles{
     width: 100px;
@@ -92,22 +95,52 @@ header span:nth-child(4){
     outline: none;
 }
 .title{
-    text-align: center;
-    padding: 10px 0px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #d9d9d9;
+    line-height: 14px;
+    font-size: 14px;
+    padding: 14px 15px;
+    display: flex;
+    overflow: hidden;
 }
+.title svg{
+    height: 14px;
+}
+.title .myMusic{
+    margin-left: 17px;
+    display: block;
+}
+.title .myMusic.hide{
+    display: none;
+}
+
 .songList li{
     text-align: left;
-    padding: 10px;
+    padding: 13px 46px;
     border-bottom: 1px solid #ddd;
-    margin: 20px;
+    font-size: 14px;
+    line-height: 14px;
+    position: relative;
+}
+.songList li.hide{
+    display: none;
 }
 .songList li.active{
-    background-color: #c5c5c5;
+    background-color: #dddde1;
     margin-right: 0px;
+}
+.songList li.active:before{
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 40px;
+    background-color: #bc2f2e;
+    position: absolute;
+    left: 0px;
+    top: 0px;
 }
 .songListOuter{
     flex-grow: 1;
+    overflow: hidden;
 }
 .siderbar{
     display: flex;
@@ -119,10 +152,11 @@ header span:nth-child(4){
 }
 .menu svg{
     height: 12px;
+    cursor: pointer;
 }
 /*main*/
 main{
-    background-color: #c3c3c3;
+    background-color: #fafafc;
 }
 
 main form{
