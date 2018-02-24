@@ -18,19 +18,19 @@ body{
     justify-content: center;
     align-items: center;
 }
-.clearfix{
+.clearfix::after{
     content: '';
     display: block;
     clear: both;
 }
 /*默认样式*/
 .pageOuter{
-    min-width: 802px;
-    min-height: 625px;
+    width: 800px;
+    height: 625px;
     border: 1px solid #c3a03f;
     box-shadow: 0 10px 30px 0px  rgb(218, 217, 217);
 }
-header{
+.pageOuter>header{
     background-color: rgb(188,47,46);
     width: 100%;
     height: 30px;
@@ -39,22 +39,22 @@ header{
     line-height: 12px; 
 }
 
-header span{
+.pageOuter>header span{
     text-align: center;
     display: inline-block;
     width: 50px;
     padding: 9px 0px;
     cursor: default;
 }
-header span:hover{
+.pageOuter>header span:hover{
     background-color: #e20000;
 }
-header span:nth-child(1){
+.pageOuter>header span:nth-child(1){
     margin-right: 10px;
 }
-header span:nth-child(2),
-header span:nth-child(3),
-header span:nth-child(4){
+.pageOuter>header span:nth-child(2),
+.pageOuter>header span:nth-child(3),
+.pageOuter>header span:nth-child(4){
     float: right;
 }
 .page{
@@ -62,15 +62,23 @@ header span:nth-child(4){
     width: 100%;
     height: 592px;
 }
-.page aside{
+.page aside.siderbar{
     width: 190px;
-    background-color: #f3f3f5;
+    background-color: #fceee6;
 }
-.page aside.hide{
+.page aside.siderbar.hide{
     width: 46px;
 }
-.page .newSongsInformation{
+.page .addOrAlbum{
     flex-grow: 1;
+    position: relative;
+}
+.page .newSongsInformation,
+.page main.album{
+    width: 100%;
+    position: absolute;
+    top: 100px;
+    left: 0px;
 }
 /*aside*/
 .uploadArea{
@@ -116,7 +124,6 @@ header span:nth-child(4){
 .songList li{
     text-align: left;
     padding: 13px 46px;
-    border-bottom: 1px solid #ddd;
     font-size: 14px;
     line-height: 14px;
     position: relative;
@@ -155,7 +162,7 @@ header span:nth-child(4){
     cursor: pointer;
 }
 /*main*/
-main{
+.addOrAlbum{
     background-color: #fafafc;
 }
 
@@ -181,4 +188,51 @@ main form .row button{
     width: 80px;
     border: none;
     border-radius: 5px;
+}
+.page .addOrAlbum header{
+    font-size: 14px;
+    height: 46px;
+    line-height: 14px;
+    padding: 16px 15px;
+}
+.computerNav ul{
+    display: flex;
+    justify-content: start;
+    border-bottom: 1px solid #d3d3d3;
+}
+.computerNav ul li{
+    list-style: none;
+    padding: 13.5px 15px;
+    line-height: 14px;
+}
+.computerNav ul li span{
+    display: inline-block;
+    font-size: 14px;
+    height: 14px;
+    line-height: 14px;
+    cursor: default;
+}
+.computerNav ul li.active span{
+    position: relative;
+}
+.computerNav ul li.active span:before{
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: red;
+    position: absolute;
+    top: 26px;
+    left: 0px;
+}
+.page .addOrAlbum main.album{
+    width: 100%;
+}
+.page .addOrAlbum main.album div{
+    float: left;
+}
+.page .addOrAlbum main.album.hide{
+    display: none;
+}
+.page .addOrAlbum main.newSongsInformation.hide{
+    display: none;
 }

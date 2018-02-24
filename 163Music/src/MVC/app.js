@@ -1,5 +1,4 @@
 {
-
     var uploader = Qiniu.uploader({
         runtimes: 'html5',      // 上传模式，依次退化
         browse_button: 'pickfiles',        // 上传选择的点选按钮，必需
@@ -25,7 +24,7 @@
         dragdrop: true,                     // 开启可拖曳上传
         drop_element: 'container',          // 拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
         chunk_size: '4mb',                  // 分块上传时，每块的体积
-        auto_start: true,                   // 选择文件后自动上传，若关闭需要自己绑定事件触发上传
+        auto_start: false,                   // 选择文件后自动上传，若关闭需要自己绑定事件触发上传
         //x_vars : {
         //    查看自定义变量
         //    'time' : function(up,file) {
@@ -41,15 +40,39 @@
         //},
         init: {
             'FilesAdded': function(up, files) {
+                var fileName;
+                var sourceLink;
                 plupload.each(files, function(file) {
-                    // 文件添加进队列后，处理相关的事情
+                    var domain = up.getOption('domain');
+                    fileName = file.name;
+                    sourceLink = "http://"+domain +"/"+ encodeURIComponent(fileName);
+                    
+                    window.eventHub.emit('upload',{
+                        url: sourceLink,
+                        name: file.name,
+                        album: '',
+                    });
+                    let data = {
+                        songInformation: true,
+                        album: false
+                    }
+                    $('.album').removeClass('active').siblings('.songInformation').addClass('active');
+                    window.eventHub.emit('addOrAlbum',data);
+                    window.eventHub.emit('activeButton',null);
+                });
+                $('#up_load').on('click', function(){
+                    if($.trim(fileName) && $.trim($('input[name=album]').val())){
+                        uploader.start();
+                    }
                 });
             },
             'BeforeUpload': function(up, file) {
-                   // 每个文件上传前，处理相关的事情
+                
+                console.log(2)
             },
             'UploadProgress': function(up, file) {
                    // 每个文件上传时，处理相关的事情
+                   console.log(3)
             },
             'FileUploaded': function(up, file, info) {
                    // 每个文件上传成功后，处理相关的事情
@@ -59,15 +82,7 @@
                    //    "key": "gogopher.jpg"
                    //  }
                    // 查看简单反馈
-                    var domain = up.getOption('domain');
-                    var response = JSON.parse(info.response);
-                    var sourceLink = "http://"+domain +"/"+ encodeURIComponent(response.key); 
-                    window.eventHub.emit('upload',{
-                        url: sourceLink,
-                        name: response.key,
-                        singer: '',
-                    })
-                    window.eventHub.emit('activeButton',null);
+                   console.log(4)
             },
             'Error': function(up, err, errTip) {
                    //上传出错时，处理相关的事情
@@ -77,4 +92,5 @@
             },
         }
     });
+    
 }

@@ -70,7 +70,8 @@
                 this.view.clearActive();
             })
             window.eventHub.on('create',(data)=>{
-                this.model.data.songs.push(data);
+                let newData = data;
+                this.model.data.songs.push(newData);
                 this.view.render(this.model.data);
             })
             window.eventHub.on('updated',(data)=>{

@@ -7,18 +7,18 @@ let view = {
             <label>歌曲</label><input type="text" name="name" value="__name__">
         </div>
         <div class="row">
-            <label>歌手</label><input type="text" name="singer" value="__singer__">
+            <label>专辑</label><input type="text" name="album" value="__album__">
         </div>
         <div class="row">
             <label>外链</label><input type="text" value="__url__" name="url" readonly>
         </div>
         <div class="row">
-            <label></label><button type="submit" disabled="true" class="submitButton">保存</button>
-        </div>
+            <label></label><button type="submit" disabled="true" class="submitButton" id="up_load">保存</button>
+        </div> 
     </form>
     ` ,
     render(data = {}){
-        let placeholders = ['name', 'url','singer','id']
+        let placeholders = ['name', 'url','album','id']
         let html = this.template
         placeholders.map((string)=>{
           html = html.replace(`__${string}__`, data[string] || '')
@@ -32,7 +32,7 @@ let view = {
 
 let model = {
     data: {
-        'name':'','singer':'','url':'','id':''
+        'name':'','album':'','url':'','id':''
     },
     saveSong(data){
         // 声明类型
@@ -41,7 +41,7 @@ let model = {
         var song = new Song();
         // 设置名称
         song.set('name',data.name);
-        song.set('singer',data.singer);
+        song.set('album',data.album);
         song.set('url',data.url);
         // 设置优先级
         return song.save().then((newSong)=>{
@@ -52,10 +52,11 @@ let model = {
         });
     },
     updated(data){
-        var song = AV.Object.createWithoutData('Song', this.data.id);
+        console.log(data)
+        var song = AV.Object.createWithoutData('Song', data.id);
         // 修改属性
         song.set('name', data.name);
-        song.set('singer', data.singer);
+        song.set('album', data.album);
         // 保存到云端
         song.save();
     }
@@ -69,24 +70,27 @@ let controller = {
         this.bindEventHub();
     },
     bindEvents(){
-        $(this.view.el).on('submit', 'form', (e)=>{
+         $(this.view.el).on('submit', 'form', (e)=>{
             e.preventDefault()
-            let needs = ['name','singer','url'];
+            let needs = ['name','album','url'];
             let data = {}
             needs.map((string)=>{
               data[string] = $(this.view.el).find(`[name="${string}"]`).val()
             })
-            if(this.model.data.id){
+            if(this.model.data.id && $.trim(data.name) && $.trim(data.album)){
+                console.log(this.model.data.id)
                 data['id'] = this.model.data.id;
-                this.model.updated(data)
-                window.eventHub.emit('updated',data)
+                this.model.updated(data);
+                window.eventHub.emit('updated',data);
                 this.view.reset();
-            }else{
+            }else if(!this.model.data.id && $.trim(data.name) && $.trim(data.album)){
                 this.model.saveSong(data)
                 .then(()=>{
+                data['id'] = this.model.data.id;
+                this.model.data.id = '';
                 this.view.reset();
                     window.eventHub.emit('create',data);
-                })
+                })  
             }
         })
     },
@@ -102,13 +106,22 @@ let controller = {
             $('.submitButton').removeAttr('disabled');
         })
 
+        //手机端切换
         window.eventHub.on('SongAddOrSongList',(data)=>{
             if( data.add === true && data.list === false){
                 $(this.view.el).removeClass('hide');
             }else if(data.add === false && data.list === true){
                 $(this.view.el).addClass('hide');
             }
-            
+        })
+
+        //电脑端切换
+        window.eventHub.on('addOrAlbum',(data)=>{
+            if(data.songInformation === true && data.album === false){
+                $(this.view.el).removeClass('hide');
+            }else if(data.songInformation === false && data.album === true){
+                $(this.view.el).addClass('hide');
+            }
         })
     }
 }
