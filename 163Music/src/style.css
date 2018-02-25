@@ -139,7 +139,7 @@ body{
     content: '';
     display: inline-block;
     width: 2px;
-    height: 40px;
+    height: 100%;
     background-color: #bc2f2e;
     position: absolute;
     left: 0px;

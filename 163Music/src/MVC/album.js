@@ -22,9 +22,9 @@
         },
         bindEventHub(){
             window.eventHub.on('SongAddOrSongList',(data)=>{
-                if(data.add === true && data.list === false){
+                if(data.myAlbum === false){
                     $(this.view.el).addClass('hide');
-                }else if(data.add === false && data.list === true){
+                }else if(data.myAlbum  === true){
                     $(this.view.el).removeClass('hide');
                 }
             })

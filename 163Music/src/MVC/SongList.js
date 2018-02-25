@@ -69,6 +69,7 @@
             window.eventHub.on('upload',(data)=>{
                 this.view.clearActive();
             })
+           
             window.eventHub.on('create',(data)=>{
                 let newData = data;
                 this.model.data.songs.push(newData);
@@ -100,9 +101,9 @@
                 }
             })
             window.eventHub.on('SongAddOrSongList',(data)=>{
-                if(data.add === true && data.list === false){
+                if(data.list === false){
                     $(this.view.el).addClass('hide');
-                }else if(data.add === false && data.list === true){
+                }else if(data.list === true){
                     $(this.view.el).removeClass('hide');
                 }
             })

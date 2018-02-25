@@ -14,6 +14,12 @@
             this.view = view;
             this.model = model;
             this.view.render();
+            $('.uploadArea').on('click','button',function(){
+                let data = {
+                    'name':'','album':'','url':'','id':''
+                }
+                window.eventHub.emit('clearForm',data);
+            })
         }
     }
     controller.init(view,model);

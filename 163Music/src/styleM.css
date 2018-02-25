@@ -43,7 +43,7 @@
         display: flex;
     }
     .topbar ol li{
-        width: 50vw;
+        width: 33.3333333333333333vw;
         text-align: center;
         color: #d43c33;
     }
@@ -75,12 +75,13 @@
         width: 14px;
         height: 14px;
     }
-    .newSongsInformation{
+    .newSongsInformationOuter{
+        width: 100%;
         position: absolute;
         top: 30vw;
         left: 0vw;
     }
-    .newSongsInformation.hide{
+    .newSongsInformationOuter.hide{
         display: none;
     }
     .songListOuter.hide{
@@ -88,5 +89,56 @@
     }
     .album.hide{
         display: none;
+    }
+    .newSongsInformationOuter form{
+        width:100%;
+        padding: 20px;
+    }
+    
+    .newSongsInformationOuter form .row label{
+        display: inline-block;
+        width: 10%;
+        font-size: 14px;
+    }
+    .newSongsInformationOuter form .row  input[type=text]{
+        padding: 5px;
+        margin: 5%;
+        font-size: 14px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        width: 80%;
+    }
+    .newSongsInformationOuter form .row button{
+        font-size: 16px;
+        padding: 5px;
+        margin: 5%;
+        width: 80px;
+        border: none;
+        border-radius: 5px;
+    }
+    .uploadArea{
+        height: 35vw;
+        width: 80vw;
+        margin: 20px 10vw;
+        border: 2px dashed gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        position: absolute!important; 
+        left: 0px;
+        top: 120vw!important;
+    }
+    .uploadArea.hide{
+        display: none;
+    }
+    .pickfiles{
+        width: 135vw;
+        height: 20vw;
+        background-color: transparent;
+        border: none;
+        opacity: .5;
+        outline: none;
+        position: relative;
     }
 }

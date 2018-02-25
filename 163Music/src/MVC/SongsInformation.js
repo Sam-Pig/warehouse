@@ -34,6 +34,7 @@ let model = {
     data: {
         'name':'','album':'','url':'','id':''
     },
+    didSave: false,
     saveSong(data){
         // 声明类型
         var Song = AV.Object.extend('Song');
@@ -101,6 +102,8 @@ let controller = {
         window.eventHub.on('select',(data)=>{
             this.model.data = data;
             this.view.render(this.model.data);
+            $(this.view.el).parent().removeClass('hide');
+            $('.uploadArea').removeClass('hide');
         })
         window.eventHub.on('activeButton',()=>{
             $('.submitButton').removeAttr('disabled');
@@ -108,10 +111,12 @@ let controller = {
 
         //手机端切换
         window.eventHub.on('SongAddOrSongList',(data)=>{
-            if( data.add === true && data.list === false){
-                $(this.view.el).removeClass('hide');
-            }else if(data.add === false && data.list === true){
-                $(this.view.el).addClass('hide');
+            if( data.add === true){
+                $(this.view.el).parent().removeClass('hide');
+                $('.uploadArea').removeClass('hide');
+            }else if(data.add === false){
+                $(this.view.el).parent().addClass('hide');
+                $('.uploadArea').addClass('hide');
             }
         })
 
@@ -119,9 +124,15 @@ let controller = {
         window.eventHub.on('addOrAlbum',(data)=>{
             if(data.songInformation === true && data.album === false){
                 $(this.view.el).removeClass('hide');
+                
             }else if(data.songInformation === false && data.album === true){
                 $(this.view.el).addClass('hide');
             }
+        })
+
+        window.eventHub.on('clearForm',(data)=>{
+            this.view.reset();
+            this.model.data = data;
         })
     }
 }

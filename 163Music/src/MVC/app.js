@@ -46,7 +46,6 @@
                     var domain = up.getOption('domain');
                     fileName = file.name;
                     sourceLink = "http://"+domain +"/"+ encodeURIComponent(fileName);
-                    
                     window.eventHub.emit('upload',{
                         url: sourceLink,
                         name: file.name,
