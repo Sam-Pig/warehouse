@@ -9,7 +9,23 @@
             let $el = $(this.el);
             $el.html(this.template);
             let {songs} = data;
-            let liList = songs.map((song)=> $('<li></li>').text(song.name).attr('data-song-id',song.id));
+            let liList = songs.map((song)=> $(`
+            <li class="test">
+                <div class="eachSong">
+                    <p>${song.name}</p>
+                    <div class="hot">
+                        <svg class="icon music" aria-hidden="true">
+                            <use xlink:href="#icon-quxiaoremen"></use>
+                        </svg>
+                        <span>${song.album}</span>
+                    </div>
+                </div>
+                <a class="playButton" href="#">
+                    <svg class="icon music" aria-hidden="true">
+                        <use xlink:href="#icon-iconset0481"></use>
+                    </svg>
+                </a>
+            </li>`).attr('data-song-id',song.id));
             $el.find('ul').empty();
             liList.map((li)=>{
             $el.find('ul').append(li);
@@ -50,6 +66,7 @@
         bindEvents(){
             $(this.view.el).on('click','li',(e)=>{
                 this.view.activationSong(e.currentTarget);
+                console.log(e.currentTarget)
                 let currentSongId = e.currentTarget.getAttribute('data-song-id');
                 let data;
                 let songs = this.model.data.songs;
@@ -63,6 +80,21 @@
                 let object = JSON.parse(string);
                 window.eventHub.emit('select',object);
                 window.eventHub.emit('activeButton',null);
+                $(this.view.el).addClass('hide'); //手机端需要隐藏，跳转到歌曲信息界面
+                window.eventHub.emit('jumpDirectlyToAdd',null);
+            })
+
+            $(this.view.el).on('click','svg',(e)=>{
+                let currentSongId = $(e.currentTarget).parent().parent()[0].getAttribute('data-song-id');
+                let data;
+                let audioSrc;
+                let songs = this.model.data.songs;
+                for(let i = 0;i < songs.length; i++){
+                    if(songs[i].id === currentSongId){
+                        audioSrc = songs[i].url
+                    }
+                }
+                window.eventHub.emit('showplayMusic',audioSrc);
             })
         },
         bindEventHub(){

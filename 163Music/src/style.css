@@ -29,6 +29,7 @@ body{
     height: 625px;
     border: 1px solid #c3a03f;
     box-shadow: 0 10px 30px 0px  rgb(218, 217, 217);
+    position: relative;
 }
 .pageOuter>header{
     background-color: rgb(188,47,46);
@@ -62,6 +63,21 @@ body{
     width: 100%;
     height: 592px;
 }
+.page.hide{
+    display: none;
+}
+.playInterface{
+    width: 100%;
+    height: 592px;
+    background-color: #f0f0f0;
+    position: absolute;
+    left: 0px;
+    top: 30px;
+    z-index: 5;
+}
+.playInterface.hide{
+    display: none;
+}
 .page aside.siderbar{
     width: 190px;
     background-color: #fceee6;
@@ -77,7 +93,7 @@ body{
 .page main.album{
     width: 100%;
     position: absolute;
-    top: 100px;
+    top: 89px;
     left: 0px;
 }
 /*aside*/
@@ -123,10 +139,37 @@ body{
 
 .songList li{
     text-align: left;
-    padding: 13px 46px;
+    padding: 13px;
     font-size: 14px;
     line-height: 14px;
     position: relative;
+}
+.songList li{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.songList li .eachSong{
+    flex-grow: 1;
+}
+.songList li  a{
+    width: 2em;
+    height: 2em;
+}
+.songList li  a svg {
+    font-size: 2em;
+    z-index: 9;
+}
+.songList li div span{
+    opacity: .3;
+}
+.songList li div .hot{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin-top: 3px;
 }
 .songList li.hide{
     display: none;
@@ -193,7 +236,7 @@ main form .row button{
     font-size: 14px;
     height: 46px;
     line-height: 14px;
-    padding: 16px 15px;
+    padding: 16px 5%;
 }
 .computerNav ul{
     display: flex;
@@ -202,8 +245,12 @@ main form .row button{
 }
 .computerNav ul li{
     list-style: none;
-    padding: 13.5px 15px;
+    padding: 13.5px 0px;
     line-height: 14px;
+    margin: 0px 5%;
+}
+.computerNav ul li:nth-child(2){
+    margin-left: 0%;
 }
 .computerNav ul li span{
     display: inline-block;
@@ -225,14 +272,67 @@ main form .row button{
     left: 0px;
 }
 .page .addOrAlbum main.album{
-    width: 100%;
+    width: 90%;
+    margin: 0% 5%;
 }
 .page .addOrAlbum main.album div{
     float: left;
+    width: 30%;
+    margin-right: 5%;
+    margin-top: 2%;
+}
+.page .addOrAlbum main.album div:nth-child(3n+0){
+    margin-right: 0%;
+}
+.page .addOrAlbum main.album div img{
+    width: 100%;
+}
+.page .addOrAlbum main.album div figcaption{
+    font-size: 14px;
+    width: 100%;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .page .addOrAlbum main.album.hide{
     display: none;
 }
 .page .addOrAlbum main.newSongsInformation.hide{
     display: none;
+}
+.site-loading{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+    background-color: rgba(220,220,225,.5);
+}
+.site-loading::before{
+    content: '';
+    display: block;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+    background-color: rgba(0,0,0,.3);
+    border-radius: 50%;
+    animation: loading 1s infinite alternate-reverse linear;
+}
+@keyframes loading{
+    0%{
+        transform: scale(0.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.site-loading.hide{
+    visibility: hidden;
 }

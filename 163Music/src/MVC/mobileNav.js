@@ -25,6 +25,7 @@
             this.model = model;
             this.view.render();
             this.bindEvents();
+            this.bindEventHub();
         },
         bindEvents(){
             $(this.view.el).on('click','li',(e)=>{
@@ -46,6 +47,11 @@
                 window.eventHub.emit('SongAddOrSongList',data);
             })
         },
+        bindEventHub(){
+            window.eventHub.on('jumpDirectlyToAdd',()=>{
+                $('.add').addClass('active').siblings('.active').removeClass('active');
+            });
+        }
     }
     controller.init(view,model);
 }

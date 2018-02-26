@@ -65,6 +65,24 @@
     }
     .album div{
         float: left;
+        width: 32.768vw;
+        margin-top: 3vw;
+        margin-right: 0.848vw;
+    }
+    .album div:nth-child(3n){
+        margin-right: 0vw;
+    }
+    .album div img{
+        width: 100%;
+    }
+    .album div figcaption{
+        font-size: 14px;
+        width: 100%;
+        overflow : hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
     .title{
         width: 100vw;
@@ -141,4 +159,49 @@
         outline: none;
         position: relative;
     }
+    .songListOuter{
+        width: 100%;
+    }
+    .songListOuter .songList{
+        width: 100%;
+    }
+    .songListOuter .songList li{
+        width: 100vw;
+        padding: 3vw 8vw;
+        border-bottom:1px solid #d3d3d3;
+    }
+    .songList li{
+        text-align: left;
+        padding: 13px;
+        font-size: 14px;
+        line-height: 14px;
+        position: relative;
+    }
+    .songList li{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .songList li .eachSong{
+        flex-grow: 1;
+    }
+    .songList li  a{
+        width: 2em;
+        height: 2em;
+    }
+    .songList li  a svg {
+        font-size: 2em;
+    }
+    .songList li div span{
+        opacity: .3;
+    }
+    .songList li div .hot{
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        margin-top: 3px;
+    }
+   
 }

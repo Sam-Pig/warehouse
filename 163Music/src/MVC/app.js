@@ -67,11 +67,10 @@
             },
             'BeforeUpload': function(up, file) {
                 
-                console.log(2)
             },
             'UploadProgress': function(up, file) {
                    // 每个文件上传时，处理相关的事情
-                   console.log(3)
+                   window.eventHub.emit('beforeUpload',false)
             },
             'FileUploaded': function(up, file, info) {
                    // 每个文件上传成功后，处理相关的事情
@@ -81,7 +80,7 @@
                    //    "key": "gogopher.jpg"
                    //  }
                    // 查看简单反馈
-                   console.log(4)
+                   window.eventHub.emit('beforeUpload',true)
             },
             'Error': function(up, err, errTip) {
                    //上传出错时，处理相关的事情

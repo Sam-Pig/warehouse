@@ -131,6 +131,7 @@ let controller = {
         })
 
         window.eventHub.on('clearForm',(data)=>{
+            console.log(1)
             this.view.reset();
             this.model.data = data;
         })

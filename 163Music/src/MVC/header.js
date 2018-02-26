@@ -1,8 +1,8 @@
 {
     let view = {
-        el: '.uploadArea',
+        el: '.header',
         template: `
-        <button id="pickfiles" class="pickfiles">文件大小不超过10M</button>
+        <span class="back">←</span>网易云音乐<span>✕</span><span>☐</span><span>一</span>
         `,
         render: function(data){
             $(this.el).html(this.template);
@@ -14,11 +14,11 @@
             this.view = view;
             this.model = model;
             this.view.render();
-            $('.uploadArea').on('click',function(){
-                let data = {
-                    'name':'','album':'','url':'','id':''
-                }
-                window.eventHub.emit('clearForm',data);
+            this.bindEvents();
+        },
+        bindEvents(){
+            $(this.view.el).on('click','span.back',(e)=>{
+                window.eventHub.emit('hideplayMusic',null);
             })
         }
     }
