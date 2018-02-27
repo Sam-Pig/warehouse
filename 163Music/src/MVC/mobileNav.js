@@ -51,7 +51,14 @@
             window.eventHub.on('jumpDirectlyToAdd',()=>{
                 $('.add').addClass('active').siblings('.active').removeClass('active');
             });
+            window.eventHub.on('hideplayMusic',()=>{
+                $('.list').addClass('active').siblings('.active').removeClass('active');
+            })
+            window.eventHub.on('updatedSongList',()=>{
+                $('.list').addClass('active').siblings('.active').removeClass('active');
+            })
         }
+        
     }
     controller.init(view,model);
 }

@@ -80,7 +80,7 @@
                    //    "key": "gogopher.jpg"
                    //  }
                    // 查看简单反馈
-                   window.eventHub.emit('beforeUpload',true)
+                   window.eventHub.emit('afterUpload',true)
             },
             'Error': function(up, err, errTip) {
                    //上传出错时，处理相关的事情

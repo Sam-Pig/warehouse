@@ -9,6 +9,7 @@
             let $el = $(this.el);
             $el.html(this.template);
             let {songs} = data;
+
             let liList = songs.map((song)=> $(`
             <li class="test">
                 <div class="eachSong">
@@ -66,7 +67,6 @@
         bindEvents(){
             $(this.view.el).on('click','li',(e)=>{
                 this.view.activationSong(e.currentTarget);
-                console.log(e.currentTarget)
                 let currentSongId = e.currentTarget.getAttribute('data-song-id');
                 let data;
                 let songs = this.model.data.songs;
@@ -91,10 +91,11 @@
                 let songs = this.model.data.songs;
                 for(let i = 0;i < songs.length; i++){
                     if(songs[i].id === currentSongId){
-                        audioSrc = songs[i].url
+                        currentaudio = songs[i]
                     }
                 }
-                window.eventHub.emit('showplayMusic',audioSrc);
+                window.eventHub.emit('showplayMusic',currentaudio);
+                window.eventHub.emit('playDirectly');
             })
         },
         bindEventHub(){
@@ -107,6 +108,7 @@
                 this.model.data.songs.push(newData);
                 this.view.render(this.model.data);
             })
+
             window.eventHub.on('updated',(data)=>{
                 this.model.data.songs.map((song)=>{
                     if(song.id === data.id){
@@ -115,6 +117,7 @@
                 })
                 this.view.render(this.model.data);
             })
+
             window.eventHub.on('zoomOutOrIn',()=>{
                 if($(this.view.el).parent().hasClass('hide')){
                     $(this.view.el).parent().removeClass('hide');
@@ -132,12 +135,25 @@
                     $(this.view.el).siblings('.uploadArea').addClass('hide');
                 }
             })
+
             window.eventHub.on('SongAddOrSongList',(data)=>{
                 if(data.list === false){
                     $(this.view.el).addClass('hide');
                 }else if(data.list === true){
                     $(this.view.el).removeClass('hide');
                 }
+            })
+
+            window.eventHub.on('hideplayMusic',()=>{
+                $(this.view.el).removeClass('hide');
+            })
+
+            window.eventHub.on('updatedSongList',(currentSongsList)=>{
+                let updatedCurrentSongsList = currentSongsList;
+                this.model.data.songs.splice(0,this.model.data.songs.length);
+                this.model.data.songs.push(updatedCurrentSongsList)
+                this.view.render(this.model.data);
+                $(this.view.el).removeClass('hide');
             })
         }
     }

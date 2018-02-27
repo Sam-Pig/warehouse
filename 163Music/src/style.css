@@ -69,11 +69,12 @@ body{
 .playInterface{
     width: 100%;
     height: 592px;
-    background-color: #f0f0f0;
     position: absolute;
     left: 0px;
     top: 30px;
     z-index: 5;
+    background-color: white;
+    overflow: hidden;
 }
 .playInterface.hide{
     display: none;
@@ -335,4 +336,123 @@ main form .row button{
 }
 .site-loading.hide{
     visibility: hidden;
+}
+.playInterface .xiyouji.hide,
+.playInterface .shibintuji.hide,
+.playInterface .gucunxinsi.hide,
+.playInterface .yueyu.hide,
+.playInterface .wuxia.hide{
+    display: none;
+}
+.playInterface>div{
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background: rgba(0,0,0,.6)
+}
+.playInterface>div>img{
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(100px);
+}
+.playInterface>div span{
+    display: none;
+}
+.playInterface .startPlaying{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.playInterface .startPlaying .CD,
+.playInterface .startPlaying .lyrics{
+    width: 50%;
+    height: 100%;
+    border: 1px solid red;
+    position: relative;
+}
+.playInterface .startPlaying .CD .disc{
+    width: 310px;
+    height: 310px;
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    margin-left: -155px;
+}
+.playInterface .startPlaying .CD .disc:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    background: url(//s3.music.126.net/m/s/img/disc.png?d3bdd10…) no-repeat;
+    background-size: 310px;
+}
+.playInterface .startPlaying .CD .disc:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    background: url(//s3.music.126.net/m/s/img/disc_light-ip6.png?996fc8a…) no-repeat;
+    background-size: 310px;
+    filter: normal;
+}
+
+div.needle{
+    width: 90px;
+    height: 20%;
+    content: " ";
+    position: absolute;
+    left: 27%;
+    top: 0px;
+    z-index: 10;
+    background: url(//s3.music.126.net/m/s/img/needle.png?702cf6d…) no-repeat;
+    background-size: contain;
+}
+div.needle.paused{
+    transform: rotate(-25deg);
+    transform-origin:0% 0%;
+}
+
+
+.playInterface .startPlaying .CD .disc .stop,
+.playInterface .startPlaying .CD .disc .play{
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 4em;
+    height: 4em;
+    margin-left: -2em;
+    margin-top: -2em;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,.3);
+    z-index: 10;
+}
+.playInterface .startPlaying .CD .disc .stop.hide,
+.playInterface .startPlaying .CD .disc .play.hide{
+    display: none;
+}
+@keyframes rotating{
+    from{transform:rotate(0)}
+    to{transform:rotate(360deg)}
+} 
+.playInterface .startPlaying .CD .disc{
+    animation:rotating 20s linear infinite;
+    animation-play-state: running;
+}
+.playInterface .startPlaying .CD .disc.paused{
+    animation:rotating 20s linear infinite;
+    animation-play-state: paused;
 }

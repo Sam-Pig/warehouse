@@ -135,6 +135,10 @@ let controller = {
             this.view.reset();
             this.model.data = data;
         })
+        window.eventHub.on('hideplayMusic',()=>{
+            $(this.view.el).parent().addClass('hide');
+            $('.uploadArea').addClass('hide');
+        })
     }
 }
 controller.init(view,model);
