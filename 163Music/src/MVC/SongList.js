@@ -129,10 +129,12 @@
                     $(this.view.el).removeClass('hide');
                     $(this.view.el).siblings('.uploadArea').removeClass('hide');
                     $('.myMusic').removeClass('hide');
+                    $('.songList li').removeClass('hide');
                 }else{
                     $('.myMusic').addClass('hide');
                     $(this.view.el).addClass('hide');
                     $(this.view.el).siblings('.uploadArea').addClass('hide');
+                    $('.songList li').addClass('hide');
                 }
             })
 

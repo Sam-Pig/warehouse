@@ -1,4 +1,4 @@
-@media screen and (max-width:768px){
+
     *{
         margin: 0px;
         padding: 0px;
@@ -11,7 +11,7 @@
         text-decoration: none;
     }
     body{
-        font-size: 16px;
+        font-size: 4.2666666667vw;
         width: 100vw;
     }
     .clearfix::after{
@@ -51,7 +51,7 @@
         display: inline-block;
         font-size: 4vw;
         line-height: 4vw;
-        padding: 3.333333333333vw 5px;
+        padding: 3.333333333333vw 1.33333333333vw;
         position: relative;
     }
     .topbar ol li.active span:before{
@@ -76,7 +76,7 @@
         width: 100%;
     }
     .album div figcaption{
-        font-size: 14px;
+        font-size: 3.73333333333vw;
         width: 100%;
         overflow : hidden;
         text-overflow: ellipsis;
@@ -87,11 +87,11 @@
     .title{
         width: 100vw;
         display: flex;
-        line-height: 14px;
+        line-height: 3.733333333333vw;
     }
     .title svg{
-        width: 14px;
-        height: 14px;
+        width: 3.73333333333vw;
+        height: 3.7333333333vw;
     }
     .newSongsInformationOuter{
         width: 100%;
@@ -110,34 +110,47 @@
     }
     .newSongsInformationOuter form{
         width:100%;
-        padding: 20px;
+        padding: 5.3333333333vw;
     }
     
     .newSongsInformationOuter form .row label{
         display: inline-block;
         width: 10%;
-        font-size: 14px;
+        font-size: 3.733333333333vw;
+        line-height: 3.73333333333333vw;
+        height: 3.733333333333333vw;
+    }
+
+    .newSongsInformationOuter form .row .lyrics{
+        vertical-align: top;
+        margin-top: 5%;
+    }
+    .newSongsInformationOuter form .row textarea{
+        margin: 5%;
+        border-radius: 5px;
+        width: 80%;
+        height: 15vw;
     }
     .newSongsInformationOuter form .row  input[type=text]{
-        padding: 5px;
+        padding: 1.33333333333vw;
         margin: 5%;
-        font-size: 14px;
+        font-size: 3.733333333333333vw;
         border: 1px solid gray;
         border-radius: 5px;
         width: 80%;
     }
     .newSongsInformationOuter form .row button{
-        font-size: 16px;
+        font-size: 4.666666667vw;
         padding: 5px;
         margin: 5%;
-        width: 80px;
+        width: 21.33333333333vw;
         border: none;
         border-radius: 5px;
     }
     .uploadArea{
         height: 35vw;
         width: 80vw;
-        margin: 20px 10vw;
+        margin: 5.333333333333vw 10vw;
         border: 2px dashed gray;
         display: flex;
         justify-content: center;
@@ -145,7 +158,7 @@
         border-radius: 8px;
         position: absolute!important; 
         left: 0px;
-        top: 120vw!important;
+        top: 130vw!important;
     }
     .uploadArea.hide{
         display: none;
@@ -172,9 +185,9 @@
     }
     .songList li{
         text-align: left;
-        padding: 13px;
-        font-size: 14px;
-        line-height: 14px;
+        padding: 3.466666666667vw;
+        font-size: 3.73333333333vw;
+        line-height: 3.73333333333vw;
         position: relative;
     }
     .songList li{
@@ -385,4 +398,3 @@
         animation:rotating 20s linear infinite;
         animation-play-state: paused;
     }
-}

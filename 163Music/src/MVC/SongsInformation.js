@@ -13,12 +13,15 @@ let view = {
             <label>外链</label><input type="text" value="__url__" name="url" readonly>
         </div>
         <div class="row">
+            <label class="lyrics">歌词</label><textarea name="lyrics">__lyrics__</textarea>
+        </div>
+        <div class="row">
             <label></label><button type="submit" disabled="true" class="submitButton" id="up_load">保存</button>
-        </div> 
+        </div>
     </form>
     ` ,
     render(data = {}){
-        let placeholders = ['name', 'url','album','id']
+        let placeholders = ['name', 'url','album','lyrics']
         let html = this.template
         placeholders.map((string)=>{
           html = html.replace(`__${string}__`, data[string] || '')
@@ -32,9 +35,8 @@ let view = {
 
 let model = {
     data: {
-        'name':'','album':'','url':'','id':''
+        'name':'','album':'','url':'','id':'','lyrics':''
     },
-    didSave: false,
     saveSong(data){
         // 声明类型
         var Song = AV.Object.extend('Song');
@@ -44,6 +46,7 @@ let model = {
         song.set('name',data.name);
         song.set('album',data.album);
         song.set('url',data.url);
+        song.set('lyrics',data.lyrics);
         // 设置优先级
         return song.save().then((newSong)=>{
           let {id,attributes} = newSong;
@@ -53,7 +56,6 @@ let model = {
         });
     },
     updated(data){
-        console.log(data)
         var song = AV.Object.createWithoutData('Song', data.id);
         // 修改属性
         song.set('name', data.name);
@@ -73,13 +75,12 @@ let controller = {
     bindEvents(){
          $(this.view.el).on('submit', 'form', (e)=>{
             e.preventDefault()
-            let needs = ['name','album','url'];
+            let needs = ['name','album','url','lyrics'];
             let data = {}
             needs.map((string)=>{
               data[string] = $(this.view.el).find(`[name="${string}"]`).val()
             })
             if(this.model.data.id && $.trim(data.name) && $.trim(data.album)){
-                console.log(this.model.data.id)
                 data['id'] = this.model.data.id;
                 this.model.updated(data);
                 window.eventHub.emit('updated',data);
