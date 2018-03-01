@@ -44,6 +44,8 @@
     }
     .topbar ol{
         display: flex;
+        position: absolute;
+        bottom: 0px;
     }
     .topbar ol li{
         width: 33.3333333333333333vw;
