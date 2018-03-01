@@ -20,6 +20,11 @@
                 }
                 window.eventHub.emit('clearForm',data);
             })
+
+            window.eventHub.on('hideplayMusic',()=>{
+                $(this.view.el).removeClass('hide');
+                
+            })
         }
     }
     controller.init(view,model);

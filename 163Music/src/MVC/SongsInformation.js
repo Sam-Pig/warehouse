@@ -60,6 +60,7 @@ let model = {
         // 修改属性
         song.set('name', data.name);
         song.set('album', data.album);
+        song.set('lyrics', data.lyrics);
         // 保存到云端
         song.save();
     }

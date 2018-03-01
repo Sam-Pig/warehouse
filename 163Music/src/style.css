@@ -386,7 +386,6 @@ main form .row button{
 .playInterface .startPlaying .lyrics{
     width: 50%;
     height: 100%;
-    border: 1px solid red;
     position: relative;
 }
 .playInterface .startPlaying .CD .disc{
@@ -471,9 +470,13 @@ div.needle.paused{
 .playInterface .startPlaying .playInformation{
     position: absolute;
     top: 5%;
-    left: 65%;
-    width: 100%;
+    left: 50%;
+    width: 50%;
     font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .playInterface .startPlaying .lyricsOuter{
     display: flex;
@@ -482,6 +485,8 @@ div.needle.paused{
     width: 50%;
     height: 300px;
     font-size: 14px;
+    overflow: hidden;
+    border: 5px solid transparent;
 }
 .playInterface .startPlaying .lyricsOuter .lyrics{
     width: 100%;
@@ -491,4 +496,7 @@ div.needle.paused{
     width: 100%;
     height: 25px;
     line-height: 25px;
+}
+.playInterface .startPlaying .lyricsOuter .lyrics p.lyriclight{
+  color: white;
 }

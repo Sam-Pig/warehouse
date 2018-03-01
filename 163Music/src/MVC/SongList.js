@@ -96,6 +96,9 @@
                 }
                 window.eventHub.emit('showplayMusic',currentaudio);
                 window.eventHub.emit('playDirectly');
+                if($('.pageOuterInMobile')){
+                    $('.pageOuterInMobile').addClass('hide');
+                }
             })
         },
         bindEventHub(){
@@ -148,6 +151,7 @@
 
             window.eventHub.on('hideplayMusic',()=>{
                 $(this.view.el).removeClass('hide');
+                
             })
 
             window.eventHub.on('updatedSongList',(currentSongsList)=>{
