@@ -125,7 +125,6 @@
         showLyrics(lyricsHash,className){
             let lyricPart = className+ ' .lyrics';
             if(lyricsHash){
-                console.log(lyricPart)
                 let lyricElement = lyricsHash.map((lyric,key)=> $(`
                 <p class="lyric_${key}  played">${lyric}</p>`));
                 $(lyricPart).empty();
@@ -203,7 +202,6 @@
                 let standardHeight = $(className+' .lyrics')[0].getBoundingClientRect().top + $(className+' .lyrics')[0].offsetHeight/2;
                 let moveDistance = $(".lyrics p:nth-child(1)")[0].offsetHeight;
                 $('audio')[0].ontimeupdate = ()=>{
-                    console.log(moveDistance)
                     let currentTime = Math.floor($('audio')[0].currentTime);
                     let lightLyric = className+ ' .lyric_'+currentTime;
 

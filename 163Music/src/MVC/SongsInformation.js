@@ -50,10 +50,10 @@ let model = {
         // 设置优先级
         return song.save().then((newSong)=>{
           let {id,attributes} = newSong;
-          Object.assign(this.data, { id, ...attributes })
+          Object.assign(this.data, { id:id, name:attributes.name,url:attributes.url,lyrics:attributes.lyrics })
         },  (error)=>{
           console.error(error);
-        });
+        })
     },
     updated(data){
         var song = AV.Object.createWithoutData('Song', data.id);
@@ -133,7 +133,6 @@ let controller = {
         })
 
         window.eventHub.on('clearForm',(data)=>{
-            console.log(1)
             this.view.reset();
             this.model.data = data;
         })

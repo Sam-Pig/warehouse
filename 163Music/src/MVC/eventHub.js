@@ -2,23 +2,20 @@ window.eventHub = {
     events: {
 
     },
-    emit(eventName,data){
+    emit:function(eventName,data){
         for(let key in this.events){
             if(key === eventName){
                 let fnList = this.events[key];
-                fnList.map((fn)=>{
+                fnList.map(function(fn){
                     fn.call(undefined,data)
                 })
             }
         }
     },
-    on(eventName,fn){
+    on:function(eventName,fn){
         if(this.events[eventName] === undefined){
             this.events[eventName] = []
         }
         this.events[eventName].push(fn);
-    },
-    off(){
-
     }
 }

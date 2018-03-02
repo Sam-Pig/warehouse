@@ -1,11 +1,7 @@
 {
     let view = {
         el: '.menu',
-        template: `
-        <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-menu"></use>
-        </svg>
-        `,
+        template: '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-menu"></use></svg>',
         render: function(data){
             $(this.el).html(this.template);
         }
@@ -18,8 +14,8 @@
             this.view.render();
             this.bindEvents();
         },
-        bindEvents(){
-            $(this.view.el).on('click','svg',(e)=>{
+        bindEvents:function(){
+            $(this.view.el).on('click','svg',function(e){
                 window.eventHub.emit('zoomOutOrIn',null);
             })
         }

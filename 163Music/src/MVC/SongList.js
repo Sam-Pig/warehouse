@@ -1,36 +1,16 @@
 {
     let view = {
         el: '.songListOuter',
-        template: `
-        <ul class="songList">
-        </ul>
-        `,
-        render(data){
+        template: '<ul class="songList"></ul>',
+        render:function(data){
             let $el = $(this.el);
             $el.html(this.template);
-            let {songs} = data;
-
-            let liList = songs.map((song)=> $(`
-            <li class="test">
-                <div class="eachSong">
-                    <p>${song.name}</p>
-                    <div class="hot">
-                        <svg class="icon music" aria-hidden="true">
-                            <use xlink:href="#icon-quxiaoremen"></use>
-                        </svg>
-                        <span>${song.album}</span>
-                    </div>
-                </div>
-                <a class="playButton" href="#">
-                    <svg class="icon music" aria-hidden="true">
-                        <use xlink:href="#icon-iconset0481"></use>
-                    </svg>
-                </a>
-            </li>`).attr('data-song-id',song.id));
-            $el.find('ul').empty();
-            liList.map((li)=>{
-            $el.find('ul').append(li);
-            })
+            let dataSongs = data;
+            let liList = dataSongs.songs.map(function(song){
+            let songNmae = song.name;
+            let songAlbum = song.album;
+            let li = $('<li class="test"><div class="eachSong"><p>'+songNmae+'</p><div class="hot"><svg class="icon music" aria-hidden="true"><use xlink:href="#icon-quxiaoremen"></use></svg><span>'+songAlbum+'</span></div></div><a class="playButton" href="#"><svg class="icon music" aria-hidden="true"><use xlink:href="#icon-iconset0481"></use></svg></a></li>').attr('data-song-id',song.id)[0];
+            $el.find('ul').append(li);})
         },
         activationSong: function(song){
             $(song).addClass('active').siblings('.active').removeClass('active');
@@ -43,18 +23,19 @@
         data:{
             songs: [],
         },
-        getAllSongs(){
+        getAllSongs:function(){
             var query = new AV.Query('Song');
-            return query.find().then( (songs)=> {
-                this.data.songs = songs.map((song)=>{
-                    return { id: song.id, ...song.attributes }
+            return query.find().then( (songs) =>{
+                this.data.songs = songs.map(function(song){
+                    return { id: song.id, name:song.attributes.name,url:song.attributes.url,album:song.attributes.album,lyrics:song.attributes.lyrics, }
                 });
                 return this.data.songs
+                
             })
         }
     }
     let controller = {
-        init(view,model){
+        init:function(view,model){
             this.view = view;
             this.model = model;
             this.view.render(this.model.data);
@@ -64,7 +45,7 @@
             })
             this.bindEvents();
         },
-        bindEvents(){
+        bindEvents:function(){
             $(this.view.el).on('click','li',(e)=>{
                 this.view.activationSong(e.currentTarget);
                 let currentSongId = e.currentTarget.getAttribute('data-song-id');
@@ -89,6 +70,7 @@
                 let data;
                 let audioSrc;
                 let songs = this.model.data.songs;
+                let currentaudio = {}
                 for(let i = 0;i < songs.length; i++){
                     if(songs[i].id === currentSongId){
                         currentaudio = songs[i]
@@ -101,7 +83,7 @@
                 }
             })
         },
-        bindEventHub(){
+        bindEventHub:function(){
             window.eventHub.on('upload',(data)=>{
                 this.view.clearActive();
             })
@@ -157,7 +139,9 @@
             window.eventHub.on('updatedSongList',(currentSongsList)=>{
                 let updatedCurrentSongsList = currentSongsList;
                 this.model.data.songs.splice(0,this.model.data.songs.length);
-                this.model.data.songs.push(updatedCurrentSongsList)
+                this.model.data.songs.push(updatedCurrentSongsList);
+                let $el = $(this.el);
+                $el.find('ul').empty();
                 this.view.render(this.model.data);
                 $(this.view.el).removeClass('hide');
             })

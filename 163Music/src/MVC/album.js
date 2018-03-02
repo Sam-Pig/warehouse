@@ -34,7 +34,7 @@
             $(this.view.el).on('click','div',(e)=>{
                 let currentTitle = e.currentTarget.getAttribute('title');
                 this.model.getCurrentAlbum(currentTitle).then((currentSongsList)=>{
-                    let hash = { id: currentSongsList[0].id, ...currentSongsList[0].attributes }
+                    let hash = { id: currentSongsList[0].id, name:currentSongsList[0].attributes.name, url:currentSongsList[0].attributes.url, album:currentSongsList[0].attributes.album, lyrics:currentSongsList[0].attributes.lyrics }
                     window.eventHub.emit('updatedSongList',hash); 
                 });
                 $(this.view.el).addClass('hide');
