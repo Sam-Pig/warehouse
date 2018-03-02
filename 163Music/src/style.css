@@ -92,7 +92,7 @@ body{
     position: relative;
 }
 .page .newSongsInformation,
-.page main.album{
+.page main.computerAlbum{
     position: absolute;
     top: 89px;
     left: 0px;
@@ -285,23 +285,23 @@ main form .row button{
     top: 26px;
     left: 0px;
 }
-.page .addOrAlbum main.album{
+.page .addOrAlbum main.computerAlbum{
     width: 90%;
     margin: 0% 5%;
 }
-.page .addOrAlbum main.album div{
+.page .addOrAlbum main.computerAlbum div{
     float: left;
     width: 30%;
     margin-right: 5%;
     margin-top: 2%;
 }
-.page .addOrAlbum main.album div:nth-child(3n+0){
+.page .addOrAlbum main.computerAlbum div:nth-child(3n+0){
     margin-right: 0%;
 }
-.page .addOrAlbum main.album div img{
+.page .addOrAlbum main.computerAlbum div img{
     width: 100%;
 }
-.page .addOrAlbum main.album div figcaption{
+.page .addOrAlbum main.computerAlbum div figcaption{
     font-size: 14px;
     width: 100%;
     overflow : hidden;
@@ -310,7 +310,7 @@ main form .row button{
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
-.page .addOrAlbum main.album.hide{
+.page .addOrAlbum main.computerAlbum.hide{
     display: none;
 }
 .page .addOrAlbum main.newSongsInformation.hide{

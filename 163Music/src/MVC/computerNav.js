@@ -3,7 +3,7 @@
         el: '.computerNav',
         template: `
         <ul>
-            <li class="album active"><span>我的音乐</span></li>
+            <li class="computerAlbum active"><span>我的音乐</span></li>
             <li class="songInformation"><span>歌曲信息</span></li>
         </ul>
         `,
@@ -30,7 +30,7 @@
                 if($(e.currentTarget).hasClass('songInformation')){
                     this.model.addOrAlbum.songInformation = true;
                     this.model.addOrAlbum.album = false;
-                }else if($(e.currentTarget).hasClass('album')){
+                }else if($(e.currentTarget).hasClass('computerAlbum')){
                     this.model.addOrAlbum.songInformation = false;
                     this.model.addOrAlbum.album = true;
                 }

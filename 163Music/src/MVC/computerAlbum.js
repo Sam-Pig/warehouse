@@ -1,6 +1,6 @@
 {
     let view = {
-        el: '.album',
+        el: '.computerAlbum',
         template: `
         <div class="xiyouji" title="西游记"><img src="http://p1.music.126.net/vmiw_qldWKuPXeKxEyxk2Q==/49478023264173.jpg?param=180y180"><figcaption>大师兄，师傅又双叒叕被妖怪抓走啦~~~~~~经典西游</figcaption></div>
         <div class="shibintuji" title="士兵突击"><img src="http://p1.music.126.net/vY3naGuvGQW6Xk0JRKXxtA==/6002233976603537.jpg?param=180y180"><figcaption>光荣在于平淡，艰巨在于漫长-士兵突击</figcaption></div>
