@@ -69,13 +69,32 @@
         bottom: 0vw;
         left: 0px;
     }
-    .album div{
+    .album .mobileOuter {
+        width: 100%;
+    }
+    .album .mobileOuter div{
         float: left;
         width: 32.768vw;
         margin-top: 3vw;
         margin-right: 0.848vw;
     }
-    .album div:nth-child(3n){
+    .album>p{
+        font-size: 4.5333333333vw;
+        width: 100%;
+        height: 5.3333333333vw;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-top: 3.73333333vw;
+    }
+    .album>p span{
+        display: inline-block;
+        line-height: 4.5333333333vw;
+        padding-left: 2.4vw;
+        border-left: 2px solid #e20000;
+    }
+
+    .album .mobileOuter div:nth-child(3n){
         margin-right: 0vw;
     }
     .album div img{
@@ -108,7 +127,7 @@
     .newSongsInformationOuter.hide{
         display: none;
     }
-    .songListOuter.hide{
+    .hotSong.hide{
         display: none;
     }
     .album.hide{
@@ -178,44 +197,95 @@
         outline: none;
         position: relative;
     }
-    .songListOuter{
+    .hotSong
+    {
+        width: 100%; 
+    }
+    .hotSong .hotpicture{
+        width: 100%;
+        height: 39vw;
+        background:url(//s3.music.126.net/m/s/img/hot_music_bg_2x.jpg?f01a252389c26bcf016816242eaa6aee) no-repeat;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        padding-left: 5.333333vw; 
+        background-size: contain;
+    }
+    .hotSong .hoticon{
+        background: url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
+        background-size: 166px 97px;
+        width: 142px;
+        height: 67px;
+        background-position: -24px -30px;
+    }
+    .hotSong .hottime{
+        margin-top: 10px;
+        color: hsla(0,0%,100%,.8);
+        font-size: 12px;
+    }
+    .hotSong .songListOuter{
         width: 100%;
     }
-    .songListOuter .songList{
+    .hotSong .songListOuter .songList{
         width: 100%;
     }
-    .songListOuter .songList li{
+    .hotSong .songListOuter .songList li,
+    .album .recentSongs .recentSongsList li{
         width: 100vw;
-        padding: 3vw 8vw;
+        padding: 3vw 3vw;
         border-bottom:1px solid #d3d3d3;
     }
-    .songList li{
-        text-align: left;
-        padding: 3.466666666667vw;
-        font-size: 3.73333333333vw;
-        line-height: 3.73333333333vw;
-        position: relative;
+    .hotSong .songListOuter .songList li,
+    .album .recentSongs .recentSongsList li{
+        width: 100vw;
+        padding: 3vw 2.666666667vw;
+        border-bottom:1px solid #d3d3d3;
     }
-    .songList li{
+    .songList li,
+    .album .recentSongs .recentSongsList li{
+        text-align: left;
+        font-size: 4.5333333333vw;
+        line-height: 4.53333333333vw;
+        position: relative;
+        color: #333333;
+    }
+    .hotSong .songListOuter .songList li,
+    .album .recentSongs .recentSongsList li{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
-    .songList li .eachSong{
+    .hotSong .songListOuter .songList li .eachSong,
+    .album .recentSongs .recentSongsList li .eachSong{
         flex-grow: 1;
     }
-    .songList li  a{
+    .hotSong .songListOuter .songList li .serialNumber{
+        width: 1.5em;
+        height: 1.5em;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        font-size: 4.5333333333vw;
+    }
+  
+    .hotSong .songListOuter .songList li  a,
+    .album .recentSongs .recentSongsList li a{
         width: 2em;
         height: 2em;
     }
-    .songList li  a svg {
+    .hotSong .songListOuter .songList li  a svg,
+    .album .recentSongs .recentSongsList li a svg{
         font-size: 2em;
     }
-    .songList li div span{
+    .hotSong .songListOuter .songList li div span,
+    .album .recentSongs .recentSongsList li div span{
         opacity: .3;
     }
-    .songList li div .hot{
+    .hotSong .songListOuter .songList li div .hot,
+    .album .recentSongs .recentSongsList li div .hot{
         display: flex;
         flex-direction: row;
         justify-content: start;
@@ -435,3 +505,54 @@
       color: white;
       text-shadow: 0px 0px 1px #1e1e1e;
     }
+    .searchOuter{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+    }
+    .searchOuter.hide{
+        display: none;
+    }
+    .searchOuter .searchInformation{
+        width: 100%;
+        padding: 4vw 2.6666666667vw;
+        position: relative;
+        opacity: .5;
+        border-bottom: 1px solid #e8e8e8;
+    }
+    .searchOuter .searchInformation input{
+        width: 100%;
+        height: 8vw;
+        border-radius: 4vw;
+        border: none;
+        background-color: #ebecec;
+        padding-left: 8.33333333vw;
+        outline: none;
+    }
+    
+    .searchOuter .searchInformation   svg{
+        width: 5.33333333vw;
+        height: 5.333333333vw;
+        position: absolute;
+        left: 4.333333333vw;
+        top: 5.333333333vw;
+    }
+    .searchOuter  .search{
+        width: 100%;
+        margin: 4vw 0vw;
+    }
+    .searchOuter  .search span{
+        display: block;
+        float: left;
+        font-size: 3.7333333333vw;
+        line-height: 3.7333333333vw;
+        height: 8vw;
+        padding: 2.1333333333vw;
+        border: 1px solid #ebecec;
+        border-radius: 10px;
+        margin-left: 2.133333333vw;
+        margin-top: 2.133333333vw;
+    }
+    

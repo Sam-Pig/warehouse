@@ -3,9 +3,9 @@
         el: '.topbar',
         template: `
         <ol>
-            <li class=" myAlbum"><span>我的歌单</span></li>
-            <li class="list"><span>我的音乐</span></li>
-            <li class="add active"><span>添加歌曲</span></li>
+            <li class="myAlbum active"><span>我的歌单</span></li>
+            <li class="list"><span>热歌榜</span></li>
+            <li class="add"><span>搜索</span></li>
         </ol>
         `,
         render: function(data){
@@ -14,8 +14,8 @@
     }
     let model = {
         addOrList:{
-            add: true,
-            myAlbum:false,
+            add: false,
+            myAlbum:true,
             list: false
         }
     }
