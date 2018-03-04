@@ -5,7 +5,9 @@
         <button id="pickfiles" class="pickfiles">文件大小不超过10M</button>
         `,
         render: function(data){
-            $(this.el).html(this.template);
+            if($(this.el)){
+                $(this.el).html(this.template);
+            }
         }
     }
     let model = {}

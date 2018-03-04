@@ -154,6 +154,15 @@ body{
 .songList li .eachSong{
     flex-grow: 1;
 }
+.songListOuter .songList li .serialNumber{
+    width: 1.5em;
+    height: 1.5em;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 14px;
+    opacity: 0.3;
+}
 .songList li  a{
     width: 2em;
     height: 2em;

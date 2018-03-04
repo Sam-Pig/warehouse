@@ -7,6 +7,8 @@ import loading from './MVC/loading.js';
 import play from './MVC/play.js';
 import header from './MVC/header.js';
 import album from './MVC/album.js';
+import SongsInformation from './MVC/SongsInformation.js';
+import SongUpload from './MVC/SongUpload.js';
 import mobileNav from './MVC/mobileNav.js';
 import mobileSearch from './MVC/mobileSearch.js';
 

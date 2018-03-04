@@ -21,12 +21,14 @@ let view = {
     </form>
     ` ,
     render(data = {}){
-        let placeholders = ['name', 'url','album','lyrics']
-        let html = this.template
-        placeholders.map((string)=>{
-          html = html.replace(`__${string}__`, data[string] || '')
-        })
-        $(this.el).html(html);
+        if($(this.el)){
+            let placeholders = ['name', 'url','album','lyrics']
+            let html = this.template
+            placeholders.map((string)=>{
+              html = html.replace(`__${string}__`, data[string] || '')
+            })
+            $(this.el).html(html);
+        }
     },
     reset(){
         this.render({});

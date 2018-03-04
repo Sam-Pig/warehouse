@@ -60,7 +60,10 @@
                 let object = JSON.parse(string);
                 window.eventHub.emit('select',object);
                 window.eventHub.emit('activeButton',null);
-                $(this.view.el).parent().addClass('hide'); //手机端需要隐藏，跳转到歌曲信息界面
+                if(!$(this.view.el).parent().hasClass('siderbar')){
+                    $(this.view.el).parent().addClass('hide');
+                }
+                 //手机端需要隐藏，跳转到歌曲信息界面
                 window.eventHub.emit('jumpDirectlyToAdd',null);
             })
 
@@ -104,14 +107,14 @@
             })
 
             window.eventHub.on('zoomOutOrIn',()=>{
-                if($(this.view.el).parent().parent().hasClass('hide')){
-                    $(this.view.el).parent().parent().removeClass('hide');
+                if($(this.view.el).parent().hasClass('hide')){
+                    $(this.view.el).parent().removeClass('hide');
                 }else{
-                    $(this.view.el).parent().parent().addClass('hide')
+                    $(this.view.el).parent().addClass('hide')
                 }
 
                 if($(this.view.el).hasClass('hide')){
-                    $(this.view.el).parent().removeClass('hide');
+                    $(this.view.el).removeClass('hide');
                     $('.uploadArea').removeClass('hide');
                     $('.myMusic').removeClass('hide');
                     $('.songList li').removeClass('hide');
