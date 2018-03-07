@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>wobenng Resume</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.0/css/swiper.min.css">
-    <script src="//at.alicdn.com/t/font_452002_brlpw6bu5u4sra4i.js"></script>
-    <link rel="stylesheet" href="style.css"
+    <script src="//at.alicdn.com/t/font_452002_sd398s9tekkxzuxr.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id = 'siteWelcome' class = 'site-welcome'>
@@ -22,25 +23,8 @@
             <ul class="navList clearfix">
                 <li class='menuTigger'><a href="#siteAbout">关于</a></li>
                 <li class='menuTigger'><a href="#siteSkills">技能</a></li>
-                <li class='menuTigger'>
-                    <a  href="#siteWorks">作品</a>
-                    <ul class='submenu'>
-                        <li>作品1</li>
-                        <li>作品2</li>
-                        <li>作品3</li>
-                    </ul>                
-                </li>
-                <li class='menuTigger'>
-                    <a  href="#">博客</a>
-                    <ul class='submenu'>
-                            <li>博客博客1</li>
-                            <li>博客博客2</li>
-                            <li>博客博客3</li>
-                        </ul> 
-                </li>
+                <li class='menuTigger'><a  href="#siteWorks">作品</a></li>
                 <li class='menuTigger'><a href="#messagePart">留言</a></li>
-                <li class='menuTigger'><a href="#">联系方式</a></li>
-                <li class='menuTigger'><a href="#">其他</a></li>
             </ul>
         </nav>
         <div class="banner">
@@ -49,45 +33,46 @@
         <main data-x id='siteAbout' class='offset'>
             <div class="userCard">
                 <div class="pictureAndText clearfix">
-                    <div class="picture">
-                    <img  src="images/avatar.jpg"  alt="头像">
-                    </div>
                     <div class="text">
                         <span class="welcome">Hello<span class="triangle"></span></span>
-                        <h1>董杭彬</h1>
-                        <p>前端开发</p>
+                        <div class="top clearfix">
+                            <div class="name clearfix">
+                                <h1>董杭彬</h1>
+                                <p>前端开发</p>
+                            </div>
+                            <div class="personalInformation clearfix">
+                                <span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-suozaichengshi"></use></svg><span>温州</span></span>
+                                <span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-nianling"></use></svg><span>25岁</span></span>
+                                <span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxiang"></use></svg><span>493953140@qq.com</span></span>
+                                <span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dianhua"></use></svg><span>15167704591</span></span>
+                            </div>
+                        </div>
                         <hr>
-                        <dl class="clearfix">
-                            <dt>年龄</dt>
-                            <dd>24</dd>
-                            <dt>所在城市</dt>
-                            <dd>温州</dd>
-                            <dt>邮箱</dt>
-                            <dd>493953140@qq.com</dd>
-                            <dt>手机</dt>
-                            <dd>15167704591</dd>
-                        </dl>
+                        <div class="personalExperience clearfix">
+                            <div class="selfIntroduction">
+                                <p><svg class="icon" aria-hidden="true"><use xlink:href="#icon-011"></use></svg>
+                                    16年7月毕业于江西理工大学工程造价专业，最开始选择了离家最近的行政助理工作;</p>
+                                <p><svg class="icon" aria-hidden="true"><use xlink:href="#icon-02"></use></svg>
+                                    从网上了解到前端并决定开始做这个工作；在学习的过程中自己也看了和前端方面有关的书和他人的博客；从HTML常用标签 ——> CSS布局、定位、浮动、转换
+                                    ——> 通过JS为HTML对应元素添加类名来控制CSS的样式变化，让界面样式能够动态变化 ——> 看
+                                    了JS方面的书和博客，知道了JS的数据类型、对象、DOM模型； ——> 从DOM API又接触到了更方便的jQuery ——> 
+                                    提交表单又了解到HTTP请求和AJAX ——> 随着代码的增多，学习了MVC这样一种写代码的方法 ——> 最后接触的Vue框架
+                                    浏览了它的文档做了一个todoList;</p>
+                                <p><svg class="icon" aria-hidden="true"><use xlink:href="#icon-03"></use></svg>从最初的做一个简历网站，到后面模仿他人的各个作品，都是在实际操作中遇到问题上网查找或者
+                                    查看文档、请教老师中完成的；包括画板、会动的简历、键盘跳转快捷跳转网页、仿网易云音乐、todoList</p>
+                                </div>
+                        </div>
                     </div>
                 </div>
                 <footer class="media">
-                    <a href="#">
+                    <a href="https://github.com/wobenng/codecamp">
                         <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-github-copy"></use>
+                            <use xlink:href="#icon-github"></use>
                         </svg>
                     </a>
-                    <a href="#">
+                    <a href="https://wobenng.github.io/">
                         <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-jianshu"></use>
-                        </svg>
-                    </a>
-                    <a href="#">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-jirengulogojichu3"></use>
-                        </svg>
-                    </a>
-                    <a href="#">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-daoruweibo"></use>
+                            <use xlink:href="#icon-hexo"></use>
                         </svg>
                     </a>
                 </footer>
@@ -95,62 +80,50 @@
             <div class="downloadResume-wrapper">
                 <a class="downloadResume" href="./resume.pdf" target="_blank" download>下载PDF</a>
             </div>
-            <p class="selfIntroduction">
-                董杭彬,工作半年多后了解到前端开发,于是自学一段时间后又参加了前端培训;
-                了解HTML,CSS,javascript;
-            </p>
         </main>
         <section  data-x  class="skills" id='siteSkills'>
             <h2>技能</h2>
             <ol class="clearfix">
                 <li>
-                    <h3>HTML 5 &amp; CSS 3</h3>
-                    <div class="progressBar progress-60 contraction"></div>
+                    <h3>HTML 5 &amp; CSS </h3>
+                    <div class="progressBar progress-50 contraction"></div>
                 </li>
                 <li>
                     <h3>JavaScript</h3>
-                    <div class="progressBar progress-50 contraction"></div>
+                    <div class="progressBar progress-30 contraction"></div>
                 </li>
                 <li>
                     <h3>jQuery</h3>
-                    <div class="progressBar progress-50 contraction"></div>
+                    <div class="progressBar progress-30 contraction"></div>
                 </li>
                 <li>
                     <h3>VUE.js</h3>
-                    <div class="progressBar progress-30 contraction"></div>
-                </li>
-                <li>
-                    <h3>React.js</h3>
-                    <div class="progressBar progress-30 contraction"></div>
-                </li>
-                <li>
-                    <h3>Node.js</h3>
-                    <div class="progressBar progress-30 contraction"></div>
+                    <div class="progressBar progress-10 contraction"></div>
                 </li>
             </ol>
         </section>
         <section  data-x class="portfolio" id='siteWorks'>
             <h2>作品集</h2>
             <nav>
-                <ol class="clearfix">
-                    <li id="portfolio1">所有</li
-                    ><li id="portfolio2">框架</li
-                    ><li id="portfolio3">原生JS&amp;CSS</li>
+                <ol class="clearfix portfolioNav">
+                    <li id="portfolio2" class="todo"><span>便签</span></li
+                    ><li id="portfolio3" class="colorPicker"><span>拾色器</span></li
+                    ><li id="portfolio4" class="canvas"><span>画板</span></li
+                    ><li id="portfolio5" class="pikachu"><span>皮卡丘</span></li
+                    ><li id="portfolio6" class="music"><span>仿网易云音乐</span></li>
                 </ol>
                 <div id="portfolioBar" class="bar state-1">
                     <div class="bar-inner"></div>
                 </div>
             </nav>
-            <div class="jobs" style="height:600px;">
-                <div id="big_1" class="big" style="top: 0; left: 0;">
-                    <img id="big_1_picture"  src="./images/1.jpg" alt="作品1">
-                </div>
-                <div id="small_1" class="small" style="top: 0; right: 0;" >
-                    <img src="./images/2.jpg" alt="作品2">
-                </div>
-                <div id="small_2" class="small" style="bottom: 0; right: 0;">
-                    <img  id="small_2_picture" src="./images/3.jpg" alt="作品3">
-                </div>
+            <div class="jobs clearfix">
+                <div class="jobsInner">
+                    <a href="https://wobenng.github.io/webpack-demo/step5/page.html"><img   src="./images/todo.jpg" alt="作品1" width=800 height=600></a>
+                    <a href="https://wobenng.github.io/IFE-task/%E8%89%B2%E5%BD%A9%E9%80%89%E6%8B%A9%E5%99%A8/%E8%89%B2%E5%BD%A9%E9%80%89%E6%8B%A9%E5%99%A8.html"><img  src="./images/colorPicker.jpg" alt="作品5" width=800 height=600></a>
+                    <a href="https://wobenng.github.io/codecamp/canvas/"><img  src="./images/canvas.jpg" alt="作品3" width=800 height=600></a>
+                    <a href="https://wobenng.github.io/codecamp/Pikachu"><img   src="./images/pikachu.jpg" alt="作品4" width=800 height=600></a>
+                    <a href="https://wobenng.github.io/codecamp/163Music/indexM.html"><img   src="./images/music.jpg" alt="作品2" width=800 height=600></a>
+                </div> 
             </div>    
         </section>
         <section data-x id="messagePart" class="messagePart">

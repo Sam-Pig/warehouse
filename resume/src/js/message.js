@@ -27,6 +27,7 @@ function Message(){
             this.myForm = this.view.querySelector('#messageForm');
             this.myForm.addEventListener('submit',(e)=>{
                 e.preventDefault();
+                console.log(1)
                 this.addMessage();
             })
         },
@@ -37,6 +38,7 @@ function Message(){
             let time = date.getFullYear() + '/' + (date.getMonth()+1) + '/' + date.getDate();
             let item;
             if(content.split(" ").join("").length){
+                
                 if(username.split(" ").join("").length === 0){
                     username = "匿名用户";
                 }
@@ -45,6 +47,8 @@ function Message(){
                     'content': content,
                     'time': time
                 }
+            }else{
+                return
             }
             this.model.save(item).then((object)=>{
                 let li = document.createElement('li');

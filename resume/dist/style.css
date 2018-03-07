@@ -18,7 +18,9 @@ body {
 
 * {
   margin: 0px;
-  padding: 0px; }
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
 
 .clearfix::after {
   content: "";
@@ -176,7 +178,8 @@ hr {
   background-color: #ffffff;
   margin-top: -400px;
   -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, .5);
-          box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, .5); }
+          box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, .5);
+  position: relative; }
 
 .userCard .welcome {
   color: white;
@@ -184,7 +187,9 @@ hr {
   display: inline-block;
   padding: 4px 15px;
   line-height: 21px;
-  position: relative; }
+  position: absolute;
+  top: 50px;
+  right: 50px; }
 
 .userCard .welcome .triangle {
   border: 10px solid transparent;
@@ -195,27 +200,68 @@ hr {
   left: 10px;
   top: 100%; }
 
-.userCard .pictureAndText .picture {
-  float: left;
-  width: 40%; }
-
 .userCard .pictureAndText .text {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  float: left;
-  width: 60%; }
+  width: 100%; }
 
-.userCard .pictureAndText .text h1 {
-  margin: 30px 0px 5px 0px; }
+.userCard .pictureAndText .text .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end; }
 
-.userCard .pictureAndText .text p {
+.userCard .pictureAndText .text .name {
+  width: 25%; }
+
+.userCard .pictureAndText .text .personalInformation {
+  width: 75%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.userCard .pictureAndText .text .personalInformation span {
+  color: #4f5150;
+  height: 1.5em;
+  display: inline-block;
+  line-height: 1.5em;
+  font-size: 18px; }
+
+.userCard .pictureAndText .text .personalInformation span svg {
+  padding-right: 5px;
+  width: 1.5em;
+  height: 1.5em; }
+
+.userCard .pictureAndText .text .personalInformation span > span {
+  line-height: 1.5em; }
+
+.userCard .pictureAndText .text .name h1 {
+  margin: 0px 0px 5px 0px; }
+
+.userCard .pictureAndText .text .name p {
   color: #424242; }
 
 .userCard .pictureAndText .text hr {
   margin: 20px 0px; }
 
 .userCard .pictureAndText {
-  padding: 50px; }
+  padding: 50px 50px 0px 50px; }
 
 .userCard .pictureAndText .text dt {
   float: left;
@@ -243,11 +289,16 @@ hr {
   background-color: rgba(0, 0, 0, .2); }
 
 .userCard .media svg {
-  width: 30px;
-  height: 30px;
+  width: 3em;
+  height: 3em;
   padding: 10px;
   vertical-align: center;
   fill: white; }
+
+.userCard .media svg use {
+  width: 100%;
+  height: 100%;
+  display: inline-block; }
 
 .downloadResume-wrapper {
   text-align: center;
@@ -271,9 +322,19 @@ hr {
 .selfIntroduction {
   max-width: 940px;
   margin: 0 auto;
-  text-align: center;
+  text-align: start;
   font-size: 18px;
   line-height: 20px; }
+
+.selfIntroduction p svg {
+  width: 2em;
+  height: 2em; }
+
+.selfIntroduction p {
+  line-height: 1.5;
+  margin: 15px;
+  margin: 15px 0px;
+  color: gray; }
 
 section.skills,
 section.portfolio,
@@ -299,7 +360,7 @@ section.skills ol {
   list-style: none;
   -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, .5);
           box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, .5);
-  padding: 42px 10px;
+  padding: 42px 10px 22px 10px;
   margin: 30px 0px; }
 
 section.skills ol li:nth-child(odd) {
@@ -338,7 +399,7 @@ section.skills ol .progressBar.contraction {
   -webkit-transform: scaleX(0);
           transform: scaleX(0); }
 
-section.skills ol .progress-60::before,
+section.skills ol .progress-10::before,
 section.skills ol .progress-50::before,
 section.skills ol .progress-30::before {
   content: "";
@@ -349,8 +410,8 @@ section.skills ol .progress-30::before {
   height: 5px;
   border-radius: 2px; }
 
-section.skills ol .progress-60::before {
-  width: 60%; }
+section.skills ol .progress-10::before {
+  width: 10%; }
 
 section.skills ol .progress-50::before {
   width: 50%; }
@@ -368,84 +429,35 @@ section.portfolio ol {
 
 section.portfolio ol li {
   float: left;
-  cursor: pointer; }
+  cursor: pointer;
+  padding: 10px 15px; }
 
-section.portfolio ol li:nth-child(2) {
-  margin: 0px 40px; }
+section.portfolio ol li span {
+  padding: 10px 0px; }
 
-section.portfolio nav .bar {
-  height: 5px; }
-
-section.portfolio nav .bar.state-1 .bar-inner,
-section.portfolio nav .bar.state-2 .bar-inner,
-section.portfolio nav .bar.state-3 .bar-inner {
-  height: 5px;
-  background-color: #E6686A;
-  border-radius: 2px;
-  -webkit-transition: all 1s;
-  transition: all 1s; }
-
-section.portfolio nav .bar.state-1 .bar-inner {
-  width: 35px;
-  margin-left: 350px; }
-
-section.portfolio nav .bar.state-2 .bar-inner {
-  width: 35px;
-  margin-left: 423px; }
-
-section.portfolio nav .bar.state-3 .bar-inner {
-  width: 95px;
-  margin-left: 495px; }
+section.portfolio ol li.active span {
+  padding: 10px 0px;
+  border-bottom: 5px solid #E6686A; }
 
 section.portfolio .jobs {
-  position: relative; }
+  position: relative;
+  width: 800px;
+  height: 600px;
+  margin: auto;
+  overflow: hidden; }
 
-section.portfolio .jobs #big_1,
-section.portfolio .jobs #small_1,
-section.portfolio .jobs #small_2 {
-  position: absolute;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s; }
+section.portfolio .jobs .jobsInner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: -webkit-transform 0.5s ease-out;
+  transition: -webkit-transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+  transition: transform 0.5s ease-out, -webkit-transform 0.5s ease-out; }
 
-section.portfolio .jobs #big_1 {
-  width: 606px;
-  height: 597px; }
-
-section.portfolio .jobs #small_1,
-section.portfolio .jobs #small_2 {
-  width: 293px;
-  height: 289px; }
-
-section.portfolio .jobs #big_1 img,
-section.portfolio .jobs #small_1 img,
-section.portfolio .jobs #small_2 img {
-  width: 100%;
-  height: 100%; }
-
-section.portfolio .jobs #big_1 #big_1_picture,
-section.portfolio .jobs #small_2 #small_2_picture {
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s; }
-
-section.portfolio .jobs #small_2 #small_2_picture.small_2_picture_2 {
-  -webkit-transform: scale(0, 0);
-          transform: scale(0, 0);
-  -webkit-transform-origin: 50% 50% 0;
-          transform-origin: 50% 50% 0; }
-
-section.portfolio .jobs #big_1 #big_1_picture.big_1_picture_1 {
-  -webkit-transform: scale(0, 0);
-          transform: scale(0, 0);
-  -webkit-transform-origin: 100% 0% 0;
-          transform-origin: 100% 0% 0; }
-
-section.portfolio .jobs #small_1.small-1 {
-  -webkit-transform: translateX(-647px);
-          transform: translateX(-647px); }
-
-section.portfolio .jobs #small_2.small-2 {
-  -webkit-transform: translate(-313px, -311px);
-          transform: translate(-313px, -311px); }
+section.portfolio .jobs .jobsInner img {
+  width: 800px;
+  height: 600px; }
 
 .site-welcome {
   width: 100%;

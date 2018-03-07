@@ -180,33 +180,25 @@ var _message2 = _interopRequireDefault(_message);
 
 __webpack_require__(9);
 
-var _ = __webpack_require__(11);
+var _todo = __webpack_require__(11);
 
-var _2 = _interopRequireDefault(_);
+var _todo2 = _interopRequireDefault(_todo);
 
-var _3 = __webpack_require__(12);
-
-var _4 = _interopRequireDefault(_3);
-
-var _5 = __webpack_require__(13);
-
-var _6 = _interopRequireDefault(_5);
-
-var _avatar = __webpack_require__(14);
-
-var _avatar2 = _interopRequireDefault(_avatar);
-
-var _canvas = __webpack_require__(15);
+var _canvas = __webpack_require__(12);
 
 var _canvas2 = _interopRequireDefault(_canvas);
 
-var _lunbo = __webpack_require__(16);
+var _music = __webpack_require__(13);
 
-var _lunbo2 = _interopRequireDefault(_lunbo);
+var _music2 = _interopRequireDefault(_music);
 
-var _nav = __webpack_require__(17);
+var _colorPicker = __webpack_require__(14);
 
-var _nav2 = _interopRequireDefault(_nav);
+var _colorPicker2 = _interopRequireDefault(_colorPicker);
+
+var _pikachu = __webpack_require__(15);
+
+var _pikachu2 = _interopRequireDefault(_pikachu);
 
 var _rsCover = __webpack_require__(10);
 
@@ -459,38 +451,21 @@ var _Controller2 = _interopRequireDefault(_Controller);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function portfolioTranslation() {
-    var view = document.querySelector('.portfolio');
+    var view = document.querySelector('.portfolioNav');
+    var modle = {
+        previousClass: 'all'
+    };
     var controller = function controller(view) {
-        var portfolio1 = view.querySelector('#portfolio1');
-        var portfolio2 = view.querySelector('#portfolio2');
-        var portfolio3 = view.querySelector('#portfolio3');
-        var small_2_picture = view.querySelector('#small_2_picture');
-        var big_1_picture = view.querySelector('#big_1_picture');
-        var portfolioBar = view.querySelector('#portfolioBar');
-        var small_1 = view.querySelector('#small_1');
-        var small_2 = view.querySelector('#small_2');
-
-        portfolio1.onclick = function () {
-            portfolioBar.className = 'bar state-1';
-            small_2_picture.className = '';
-            big_1_picture.className = '';
-            small_1.className = '';
-            small_2.className = '';
-        };
-        portfolio2.onclick = function () {
-            portfolioBar.className = 'bar state-2';
-            small_2_picture.className = 'small_2_picture_2';
-            big_1_picture.className = '';
-            small_1.className = '';
-            small_2.className = '';
-        };
-        portfolio3.onclick = function () {
-            portfolioBar.className = 'bar state-3';
-            small_2_picture.className = '';
-            big_1_picture.className = 'big_1_picture_1';
-            small_1.className = 'small-1';
-            small_2.className = 'small-2';
-        };
+        $(view).on("click", 'li', function (e) {
+            $(e.currentTarget).addClass('active').siblings().removeClass('active');
+            var imgIndex = $(e.currentTarget).index();
+            console.log($(e.currentTarget));
+            console.log(e.currentTarget);
+            console.log(imgIndex);
+            var moveDistance = imgIndex * 800;
+            console.log(moveDistance);
+            $('.jobsInner').css({ transform: 'translate(-' + moveDistance + 'px)' });
+        });
     };
     controller(view);
 }
@@ -553,6 +528,7 @@ function Message() {
             this.myForm = this.view.querySelector('#messageForm');
             this.myForm.addEventListener('submit', function (e) {
                 e.preventDefault();
+                console.log(1);
                 _this2.addMessage();
             });
         },
@@ -565,6 +541,7 @@ function Message() {
             var time = date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate();
             var item = void 0;
             if (content.split(" ").join("").length) {
+
                 if (username.split(" ").join("").length === 0) {
                     username = "匿名用户";
                 }
@@ -573,6 +550,8 @@ function Message() {
                     'content': content,
                     'time': time
                 };
+            } else {
+                return;
             }
             this.model.save(item).then(function (object) {
                 var li = document.createElement('li');
@@ -658,43 +637,31 @@ module.exports = __webpack_require__.p + "images/rs-cover.jpg";
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/1.jpg";
+module.exports = __webpack_require__.p + "images/todo.jpg";
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/2.jpg";
+module.exports = __webpack_require__.p + "images/canvas.jpg";
 
 /***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/3.jpg";
+module.exports = __webpack_require__.p + "images/music.jpg";
 
 /***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/avatar.jpg";
+module.exports = __webpack_require__.p + "images/colorPicker.jpg";
 
 /***/ }),
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/canvas.jpg";
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "images/lunbo.jpg";
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "images/nav.jpg";
+module.exports = __webpack_require__.p + "images/pikachu.jpg";
 
 /***/ })
 /******/ ]);
